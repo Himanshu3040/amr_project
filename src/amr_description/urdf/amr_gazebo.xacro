@@ -4,22 +4,22 @@
 
   <!-- Wheels -->
   <gazebo reference="Right_Wheel">
-    <mu1>100000000000000.0</mu1>
-    <mu2>100000000000000.0</mu2>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
     <kp>1000000.0</kp>
-    <kd>10.0</kd>
+    <kd>1.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>1</maxVel>
     <fdir1>1 0 0</fdir1>
   </gazebo>
 
   <gazebo reference="Left_Wheel">
-    <mu1>100000000000000.0</mu1>
-    <mu2>100000000000000.0</mu2>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
     <kp>1000000.0</kp>
-    <kd>10.0</kd>
+    <kd>1.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <maxVel>1</maxVel>
     <fdir1>1 0 0</fdir1>
   </gazebo>
     
