@@ -1,0 +1,2063 @@
+<sdf version='1.10'>
+  <world name='office_world'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
+      <background>0.699999988 0.699999988 0.699999988 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.800000012 0.800000012 1</ambient>
+            <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_north'>
+      <static>true</static>
+      <pose>0 3.2 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>22.559999999999999 0.14999999999999999 2.5</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>22.559999999999999 0.14999999999999999 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.899999976 0.899999976 0.899999976 1</ambient>
+            <diffuse>0.899999976 0.899999976 0.899999976 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_south'>
+      <static>true</static>
+      <pose>0 -3.2 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>22.559999999999999 0.14999999999999999 2.5</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>22.559999999999999 0.14999999999999999 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.899999976 0.899999976 0.899999976 1</ambient>
+            <diffuse>0.899999976 0.899999976 0.899999976 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_east'>
+      <static>true</static>
+      <pose>11.28 0 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>0.14999999999999999 6.4000000000000004 2.5</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>0.14999999999999999 6.4000000000000004 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.899999976 0.899999976 0.899999976 1</ambient>
+            <diffuse>0.899999976 0.899999976 0.899999976 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='wall_west'>
+      <static>true</static>
+      <pose>-11.28 0 1.25 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>0.14999999999999999 6.4000000000000004 2.5</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>0.14999999999999999 6.4000000000000004 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.899999976 0.899999976 0.899999976 1</ambient>
+            <diffuse>0.899999976 0.899999976 0.899999976 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_row_1'>
+      <static>true</static>
+      <pose>-9.525 -0.7 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_row_2'>
+      <static>true</static>
+      <pose>-6.47 -0.7 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_row_3'>
+      <static>true</static>
+      <pose>-3.415 -0.7 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_row_4'>
+      <static>true</static>
+      <pose>-0.36 -0.7 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_row_5'>
+      <static>true</static>
+      <pose>2.695 -0.7 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>1.2250000000000001 5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_block_1'>
+      <static>true</static>
+      <pose>5.897 -2.3 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>3 1.8 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>3 1.8 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='desk_block_2'>
+      <static>true</static>
+      <pose>9.697 -0.93 0.375 0 0 0</pose>
+      <link name='link'>
+        <collision name='col'>
+          <geometry>
+            <box>
+              <size>3.165 4.5460000000000003 0.75</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='vis'>
+          <geometry>
+            <box>
+              <size>3.165 4.5460000000000003 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.550000012 0.349999994 0.150000006 1</ambient>
+            <diffuse>0.550000012 0.349999994 0.150000006 1</diffuse>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-8.95 -2.375 0 0 0 -1.4985899179966085</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_0'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-8.95 -1.212 0 0 0 -1.6018799515751012</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_1'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-8.95 -0.3 0 0 0 -1.5228098151047016</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_2'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-8.96 0.8 0 0 0 -1.6321199904310519</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_3'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-10.28 -2.35 0 0 0 1.6417300107423911</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_4'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-10.28 -1.23 0 0 0 1.5632300223304998</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_5'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-10.28 -0.1 0 0 0 1.6122500461541245</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_6'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-10.28 0.8 0 0 0 1.5572699514204915</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_7'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-7.155 -2.37 0 0 0 1.5504100490656412</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_8'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-7.155 -1.3 0 0 0 1.6686199764162439</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_9'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-7.155 -0.2 0 0 0 1.6296300092586866</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_10'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-7.155 0.8 0 0 0 1.5816799612462569</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_11'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-5.82 -2.5 0 0 0 -1.5615700117793743</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_12'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-5.82 -1.4 0 0 0 -1.6046200241884669</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_13'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-5.82 -0.2 0 0 0 -1.4879399954265218</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_14'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-5.82 0.95 0 0 0 -1.5332300646702477</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_15'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-4 -2.3 0 0 0 1.6013499340313082</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_16'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-4 -1.34 0 0 0 1.6189400097345066</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_17'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-4 -0.2 0 0 0 1.6598700079346917</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_18'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-4 0.9 0 0 0 1.6747799908562164</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_19'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-2.85 -2.42 0 0 0 -1.5056800803601942</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_20'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-2.82 -1.53 0 0 0 -1.4881900534906298</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_21'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-2.8 -0.42 0 0 0 -1.5393700069948744</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_22'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-2.8 0.8 0 0 0 -1.5723200197788636</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_23'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1 -2.48 0 0 0 1.6638399742436478</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_24'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1 -1.36 0 0 0 1.6419299994745273</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_25'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1 -0.37 0 0 0 1.5587000235133133</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_26'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>-1 0.8 0 0 0 1.5238900036128109</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_27'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.35 -2.53 0 0 0 -1.4242900041560553</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_28'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.35 -1.553 0 0 0 -1.5376500220054199</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_29'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.35 -0.46 0 0 0 -1.5185900102029748</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_30'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0.35 0.8 0 0 0 -1.5069099763356346</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_31'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>2.25 -2.67 0 0 0 1.676810052293827</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_32'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>2.25 -1.66 0 0 0 1.5485000134781883</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_33'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>2.25 -0.5 0 0 0 1.6054699997661273</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_34'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>2.25 0.8 0 0 0 1.6496899761894745</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_35'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>3.28 -2.69 0 0 0 -1.4699400166712293</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_36'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>3.28 -1.57 0 0 0 -1.5529599656330788</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_37'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>3.28 -0.6 0 0 0 -1.5926600172577994</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_38'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>3.28 0.6 0 0 0 -1.5353700476193992</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_39'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>5 -1.2 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='OfficeChairGrey_40'>
+      <static>false</static>
+      <link name='body'>
+        <pose>0 0 0 0 0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/himanshu/.gz/fuel/fuel.gazebosim.org/openrobotics/models/officechairgrey/2/meshes/OfficeChairGrey_Col.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>6.58 -1.2 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.200000003 0.200000003 0.200000003 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.01</linear>
+        <constant>0.90000000000000002</constant>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>

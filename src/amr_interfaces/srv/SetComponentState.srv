@@ -1,0 +1,9 @@
+# Request — sent FROM diagnostic page TO the robot
+# Example: turn on the LiDAR before starting
+string component_name
+bool enable
+---
+# Response — sent BACK from robot to diagnostic page
+# The --- line above is mandatory, it separates request from response
+bool success
+string message
