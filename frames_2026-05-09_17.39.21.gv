@@ -1,0 +1,15 @@
+digraph G {
+"base_link" -> "Left_Wheel"[label=" Broadcaster: default_authority\nAverage rate: 21.25\nBuffer length: 0.8\nMost recent transform: 42.5\nOldest transform: 41.7\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Right_Wheel"[label=" Broadcaster: default_authority\nAverage rate: 21.25\nBuffer length: 0.8\nMost recent transform: 42.5\nOldest transform: 41.7\n"];
+"odom" -> "base_footprint_noisy"[label=" Broadcaster: default_authority\nAverage rate: 101.235\nBuffer length: 0.81\nMost recent transform: 42.5\nOldest transform: 41.69\n"];
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 51.562\nBuffer length: 0.64\nMost recent transform: 42.49\nOldest transform: 41.85\n"];
+"base_link" -> "Caster"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "IMU_Link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Lidar_Link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint_ekf" -> "imu_link_ekf"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1778328561.4765277"[ shape=plaintext ] ;
+}->"base_footprint_ekf";
+}
