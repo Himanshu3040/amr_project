@@ -66,7 +66,7 @@
     </inertial>
   </xacro:macro>
 
-  <link name="Base_Footprint"/>
+  <link name="base_footprint"/>
 
 
   <!-- ==================== Base Link ==================== -->
@@ -100,7 +100,7 @@
   </link>
   
   <joint name="Base_Footprint_Joint" type="fixed">
-    <parent link="Base_Footprint"/>
+    <parent link="base_footprint"/>
     <child  link="base_link"/>
     <origin xyz="0 0 ${wheel_radius}" rpy="0 0 0"/>
   </joint>
