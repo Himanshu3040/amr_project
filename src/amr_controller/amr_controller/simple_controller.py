@@ -18,7 +18,7 @@ class SimpleController(Node):
 
     def __init__(self):
         super().__init__("simple_controller")
-        self.declare_parameter("wheel_radius", 0.075)
+        self.declare_parameter("wheel_radius", 0.057)
         self.declare_parameter("wheel_separation", 0.460)
 
         self.wheel_radius_ = self.get_parameter("wheel_radius").get_parameter_value().double_value
@@ -42,10 +42,25 @@ class SimpleController(Node):
                                            [self.wheel_radius_/self.wheel_separation_, -self.wheel_radius_/self.wheel_separation_]])
         self.get_logger().info("The conversion matrix is %s" % self.speed_conversion_)
 
+        # Fill the Odometry message with invariant parameters
+        self.odom_msg_ = Odometry()
+        self.odom_msg_.header.frame_id = "odom"
+        self.odom_msg_.child_frame_id = "base_footprint"
+        self.odom_msg_.pose.pose.orientation.x = 0.0
+        self.odom_msg_.pose.pose.orientation.y = 0.0
+        self.odom_msg_.pose.pose.orientation.z = 0.0
+        self.odom_msg_.pose.pose.orientation.w = 1.0
+
+        # Fill the TF message
+        self.br_ = TransformBroadcaster(self)
+        self.transform_stamped_ = TransformStamped()
+        self.transform_stamped_.header.frame_id = "odom"
+        self.transform_stamped_.child_frame_id = "base_footprint"
+
+        self.prev_time_ = self.get_clock().now()
+
 
     def velCallback(self, msg):
-        # Implements the differential kinematic model
-        # Given v and w, calculate the velocities of the wheels
         robot_speed = np.array([[msg.linear.x],
                                 [msg.angular.z]])
         wheel_speed = np.matmul(np.linalg.inv(self.speed_conversion_), robot_speed) 
@@ -54,6 +69,56 @@ class SimpleController(Node):
         wheel_speed_msg.data = [wheel_speed[1, 0], wheel_speed[0, 0]]
 
         self.wheel_cmd_pub_.publish(wheel_speed_msg)
+
+    
+    def jointCallback(self, msg):
+        dp_left = msg.position[1] - self.left_wheel_prev_pos_
+        dp_right = msg.position[0] - self.right_wheel_prev_pos_
+        dt = Time.from_msg(msg.header.stamp) - self.prev_time_
+
+        # Actualize the prev pose for the next itheration
+        self.left_wheel_prev_pos_ = msg.position[1]
+        self.right_wheel_prev_pos_ = msg.position[0]
+        self.prev_time_ = Time.from_msg(msg.header.stamp)
+
+        # Calculate the rotational speed of each wheel
+        fi_left = dp_left / (dt.nanoseconds / S_TO_NS)
+        fi_right = dp_right / (dt.nanoseconds / S_TO_NS)
+
+        # Calculate the linear and angular velocity
+        linear = (self.wheel_radius_ * fi_right + self.wheel_radius_ * fi_left) / 2
+        angular = (self.wheel_radius_ * fi_right - self.wheel_radius_ * fi_left) / self.wheel_separation_
+
+        # Calculate the position increment
+        d_s = (self.wheel_radius_ * dp_right + self.wheel_radius_ * dp_left) / 2
+        d_theta = (self.wheel_radius_ * dp_right - self.wheel_radius_ * dp_left) / self.wheel_separation_
+        self.theta_ += d_theta
+        self.x_ += d_s * math.cos(self.theta_)
+        self.y_ += d_s * math.sin(self.theta_)
+        
+        # Compose and publish the odom message
+        q = quaternion_from_euler(0, 0, self.theta_)
+        self.odom_msg_.header.stamp = self.get_clock().now().to_msg()
+        self.odom_msg_.pose.pose.position.x = self.x_
+        self.odom_msg_.pose.pose.position.y = self.y_
+        self.odom_msg_.pose.pose.orientation.x = q[0]
+        self.odom_msg_.pose.pose.orientation.y = q[1]
+        self.odom_msg_.pose.pose.orientation.z = q[2]
+        self.odom_msg_.pose.pose.orientation.w = q[3]
+        self.odom_msg_.twist.twist.linear.x = linear
+        self.odom_msg_.twist.twist.angular.z = angular
+        self.odom_pub_.publish(self.odom_msg_)
+
+        # TF
+        self.transform_stamped_.transform.translation.x = self.x_
+        self.transform_stamped_.transform.translation.y = self.y_
+        self.transform_stamped_.transform.rotation.x = q[0]
+        self.transform_stamped_.transform.rotation.y = q[1]
+        self.transform_stamped_.transform.rotation.z = q[2]
+        self.transform_stamped_.transform.rotation.w = q[3]
+        self.transform_stamped_.header.stamp = self.get_clock().now().to_msg()
+        self.br_.sendTransform(self.transform_stamped_)
+
 
 def main():
     rclpy.init()

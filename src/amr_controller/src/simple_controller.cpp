@@ -82,13 +82,15 @@ void SimpleController::jointCallback(const sensor_msgs::msg::JointState &state)
     double linear = (wheel_radius_ * fi_right + wheel_radius_ * fi_left) / 2;
     double angular = (wheel_radius_ * fi_right - wheel_radius_ * fi_left) / wheel_separation_;
 
+    RCLCPP_INFO_STREAM(get_logger(), "Linear: " << linear << " Angular: " << angular);
+
     // Calculate the position increment
     double d_s = (wheel_radius_ * dp_right + wheel_radius_ * dp_left) / 2;
     double d_theta = (wheel_radius_ * dp_right - wheel_radius_ * dp_left) / wheel_separation_;
     theta_ += d_theta;
     x_ += d_s * cos(theta_);
     y_ += d_s * sin(theta_);
-
+    
     // Compose and publish the odom message
     tf2::Quaternion q;
     q.setRPY(0, 0, theta_);
