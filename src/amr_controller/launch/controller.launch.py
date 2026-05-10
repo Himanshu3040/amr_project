@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, GroupAction, OpaqueFunction
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import UnlessCondition, IfCondition
+from launch.actions import ExecuteProcess, TimerAction  # ADDED
 
 def noisy_controller(context, *args, **kwargs):
     use_sim_time = LaunchConfiguration("use_sim_time")
@@ -129,6 +130,37 @@ def generate_launch_description():
     )
     
     noisy_controller_launch = OpaqueFunction(function=noisy_controller)
+    
+    
+    # ── ADDED: Bumper controller spawner ──────────────────────────────────────
+    bumper_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "bumper_controller",
+            "--controller-manager",
+            "/controller_manager",
+        ],
+    )
+
+    # ── ADDED: Initialize bumpers to neutral (extended) position ──────────────
+    # Delayed so bumper_controller is fully active before we publish.
+    # If bumpers still flop at startup, increase the period value.
+    bumper_init = TimerAction(
+        period=3.0,
+        actions=[ExecuteProcess(
+            cmd=[
+                "ros2", "topic", "pub", "--once",
+                "/bumper_controller/commands",
+                "std_msgs/msg/Float64MultiArray",
+                # index 0 = Front_Bumper_Joint → 0.0 (fully extended)
+                # index 1 = Rear_Bumper_Joint  → 0.0 (fully extended)
+                "{data: [0.0, 0.0]}"
+            ],
+            output="screen",
+        )]
+    )
+    # ─────────────────────────────────────────────────────────────────────────
 
     return LaunchDescription(
         [
@@ -142,6 +174,8 @@ def generate_launch_description():
             joint_state_broadcaster_spawner,
             wheel_controller_spawner,
             simple_controller,
-            noisy_controller_launch
+            noisy_controller_launch,
+            bumper_controller_spawner,
+            bumper_init,
         ]
     )

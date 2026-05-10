@@ -11,6 +11,11 @@ controller_manager:
     simple_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
+      # ADDED
+    bumper_controller:
+      type: position_controllers/JointGroupPositionController
+
+
 
 amr_controller:
   ros__parameters:
@@ -74,3 +79,13 @@ simple_velocity_controller:
     joints:
       - Left_Wheel_Joint
       - Right_Wheel_Joint
+
+      # ADDED
+bumper_controller:
+  ros__parameters:
+    joints:
+      - Front_Bumper_Joint
+      - Rear_Bumper_Joint
+
+
+      

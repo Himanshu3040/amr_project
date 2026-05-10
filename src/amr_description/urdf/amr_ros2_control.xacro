@@ -24,8 +24,26 @@
             <state_interface name="position" />
             <state_interface name="velocity" />
         </joint>        
-    </ros2_control>
 
-    
+    <!-- ADDED: Front Bumper -->
+        <joint name="Front_Bumper_Joint">
+            <command_interface name="position">
+              <param name="min">-0.01</param>
+              <param name="max">0.0</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
 
+        <!-- ADDED: Rear Bumper -->
+        <joint name="Rear_Bumper_Joint">
+            <command_interface name="position">
+              <param name="min">0.0</param>
+              <param name="max">0.01</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+   </ros2_control> 
 </robot>
