@@ -65,7 +65,7 @@ def generate_launch_description():
         executable="create",
         output="screen",
         arguments=["-topic", "robot_description",
-                   "-name", "amr", "-x", "1", "-y", "2.5", "-z", "0.1"]
+                   "-name", "amr", "-x", "1", "-y", "2.5"]
     )
 
     gz_ros2_bridge = Node(
@@ -80,6 +80,7 @@ def generate_launch_description():
             ('/imu', '/imu/out'),
         ]
     )
+    
 
     return LaunchDescription([
         model_arg,

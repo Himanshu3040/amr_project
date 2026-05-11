@@ -131,8 +131,6 @@ def generate_launch_description():
     
     noisy_controller_launch = OpaqueFunction(function=noisy_controller)
     
-    
-    # ── ADDED: Bumper controller spawner ──────────────────────────────────────
     bumper_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -143,9 +141,6 @@ def generate_launch_description():
         ],
     )
 
-    # ── ADDED: Initialize bumpers to neutral (extended) position ──────────────
-    # Delayed so bumper_controller is fully active before we publish.
-    # If bumpers still flop at startup, increase the period value.
     bumper_init = TimerAction(
         period=3.0,
         actions=[ExecuteProcess(
@@ -160,7 +155,8 @@ def generate_launch_description():
             output="screen",
         )]
     )
-    # ─────────────────────────────────────────────────────────────────────────
+    
+    
 
     return LaunchDescription(
         [

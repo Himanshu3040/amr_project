@@ -7,6 +7,7 @@
             <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
 
+        <!-- Right Wheel -->
         <joint name="Right_Wheel_Joint">
             <command_interface name="velocity">
               <param name="min">-1</param>
@@ -16,6 +17,7 @@
             <state_interface name="velocity" />
         </joint>
 
+        <!-- Left Wheel -->
         <joint name="Left_Wheel_Joint">
             <command_interface name="velocity">
               <param name="min">-1</param>
@@ -25,7 +27,7 @@
             <state_interface name="velocity" />
         </joint>        
 
-    <!-- ADDED: Front Bumper -->
+        <!-- Front Bumper -->
         <joint name="Front_Bumper_Joint">
             <command_interface name="position">
               <param name="min">-0.01</param>
@@ -35,7 +37,7 @@
             <state_interface name="velocity" />
         </joint>
 
-        <!-- ADDED: Rear Bumper -->
+        <!-- Rear Bumper -->
         <joint name="Rear_Bumper_Joint">
             <command_interface name="position">
               <param name="min">0.0</param>

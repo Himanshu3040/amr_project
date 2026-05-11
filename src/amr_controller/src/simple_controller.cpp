@@ -28,7 +28,6 @@ SimpleController::SimpleController(const std::string& name)
     speed_conversion_ << wheel_radius_/2, wheel_radius_/2, wheel_radius_/wheel_separation_, -wheel_radius_/wheel_separation_;
     RCLCPP_INFO_STREAM(get_logger(), "The conversion matrix is \n" << speed_conversion_);
 
-    // Fill the Odometry message with invariant parameters
     odom_msg_.header.frame_id = "odom";
     odom_msg_.child_frame_id = "base_footprint";
     odom_msg_.pose.pose.orientation.x = 0.0;
@@ -46,8 +45,6 @@ SimpleController::SimpleController(const std::string& name)
 
 void SimpleController::velCallback(const geometry_msgs::msg::TwistStamped &msg)
 {
-    // Implements the differential kinematic model
-    // Given v and w, calculate the velocities of the wheels
     Eigen::Vector2d robot_speed(msg.twist.linear.x, msg.twist.angular.z);
     Eigen::Vector2d wheel_speed = speed_conversion_.inverse() * robot_speed;
     std_msgs::msg::Float64MultiArray wheel_speed_msg;
@@ -60,36 +57,27 @@ void SimpleController::velCallback(const geometry_msgs::msg::TwistStamped &msg)
 
 void SimpleController::jointCallback(const sensor_msgs::msg::JointState &state)
 {
-    // Implements the inverse differential kinematic model
-    // Given the position of the wheels, calculates their velocities
-    // then calculates the velocity of the robot wrt the robot frame
-    // and then converts it in the global frame and publishes the TF
     double dp_left = state.position.at(0) - left_wheel_prev_pos_;
     double dp_right = state.position.at(1) - right_wheel_prev_pos_;
     rclcpp::Time msg_time = state.header.stamp;
     rclcpp::Duration dt = msg_time - prev_time_;
 
-    // Actualize the prev pose for the next itheration
     left_wheel_prev_pos_ = state.position.at(0);
     right_wheel_prev_pos_ = state.position.at(1);
     prev_time_ = state.header.stamp;
 
-    // Calculate the rotational speed of each wheel
     double fi_left = dp_left / dt.seconds();
     double fi_right = dp_right / dt.seconds();
 
-    // Calculate the linear and angular velocity
     double linear = (wheel_radius_ * fi_right + wheel_radius_ * fi_left) / 2;
     double angular = (wheel_radius_ * fi_right - wheel_radius_ * fi_left) / wheel_separation_;
 
-    // Calculate the position increment
     double d_s = (wheel_radius_ * dp_right + wheel_radius_ * dp_left) / 2;
     double d_theta = (wheel_radius_ * dp_right - wheel_radius_ * dp_left) / wheel_separation_;
     theta_ += d_theta;
     x_ += d_s * cos(theta_);
     y_ += d_s * sin(theta_);
     
-    // Compose and publish the odom message
     tf2::Quaternion q;
     q.setRPY(0, 0, theta_);
     odom_msg_.header.stamp = get_clock()->now();
@@ -103,7 +91,6 @@ void SimpleController::jointCallback(const sensor_msgs::msg::JointState &state)
     odom_msg_.twist.twist.angular.z = angular;
     odom_pub_->publish(odom_msg_);
 
-    // TF
     transform_stamped_.transform.translation.x = x_;
     transform_stamped_.transform.translation.y = y_;
     transform_stamped_.transform.rotation.x = q.getX();
