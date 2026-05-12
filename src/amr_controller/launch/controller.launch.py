@@ -155,6 +155,56 @@ def generate_launch_description():
             output="screen",
         )]
     )
+
+     # ── Lidar Safety Stop ──────────────────────────────────────────────────────
+    # Reads /scan, classifies danger zone, publishes to /lidar_safety_stop.
+    # Topic renamed from default "safety_stop" via parameter so it feeds
+    # the arbitrator instead of twist_mux directly.
+    lidar_safety_stop_node = Node(
+        package="amr_controller",
+        executable="lidar_safety_stop",
+        name="lidar_safety_stop_node",
+        output="screen",
+        parameters=[{
+            "safety_stop_topic": "lidar_safety_stop",
+        }]
+    )
+
+    # ── Ultrasonic Safety Stop ─────────────────────────────────────────────────
+    # Reads /ultrasonic_raw from ethernet_bridge_node (STM32 via UDP).
+    # Applies per-direction thresholds: front=250mm, rear=130mm.
+    # Publishes /ultrasonic_safety_stop [std_msgs/Bool]
+    # Publishes /ultrasonic_zones       [amr_interfaces/UltrasonicZones]
+    ultrasonic_safety_stop_node = Node(
+        package="amr_controller",
+        executable="ultrasonic_safety_stop",
+        name="ultrasonic_safety_stop_node",
+        output="screen",
+        parameters=[{
+            "front_protective_distance_mm": 250.0,
+            "rear_protective_distance_mm":  130.0,
+            "ultrasonic_raw_topic":         "ultrasonic_raw",
+            "ultrasonic_safety_stop_topic": "ultrasonic_safety_stop",
+            "ultrasonic_zones_topic":       "ultrasonic_zones",
+        }]
+    )
+
+    # ── Safety Arbitrator ──────────────────────────────────────────────────────
+    # Subscribes to /lidar_safety_stop AND /ultrasonic_safety_stop.
+    # Publishes true to /safety_stop if EITHER is true.
+    # /safety_stop is the twist_mux lock (priority 255) — nothing moves
+    # unless both sensors are clear.
+    safety_arbitrator_node = Node(
+        package="amr_controller",
+        executable="safety_arbitrator",
+        name="safety_arbitrator_node",
+        output="screen",
+        parameters=[{
+            "lidar_safety_stop_topic":      "lidar_safety_stop",
+            "ultrasonic_safety_stop_topic": "ultrasonic_safety_stop",
+            "safety_stop_topic":            "safety_stop",
+        }]
+    )   
     
     
 
@@ -173,5 +223,8 @@ def generate_launch_description():
             noisy_controller_launch,
             bumper_controller_spawner,
             bumper_init,
+            lidar_safety_stop_node,
+            ultrasonic_safety_stop_node,
+            safety_arbitrator_node,
         ]
     )

@@ -15,6 +15,8 @@ find_package(Eigen3 REQUIRED)
 find_package(twist_mux_msgs REQUIRED) 
 find_package(rclcpp_action REQUIRED)
 find_package(visualization_msgs REQUIRED)
+find_package(amr_interfaces REQUIRED)
+
 
 include_directories(include)
 include_directories(${EIGEN3_INCLUDE_DIR})
@@ -31,6 +33,13 @@ ament_target_dependencies(twist_relay rclcpp geometry_msgs)
 add_executable(lidar_safety_stop src/lidar_safety_stop.cpp)
 ament_target_dependencies(lidar_safety_stop rclcpp std_msgs sensor_msgs geometry_msgs twist_mux_msgs rclcpp_action visualization_msgs)
 
+add_executable(ultrasonic_safety_stop src/ultrasonic_safety_stop.cpp)
+ament_target_dependencies(ultrasonic_safety_stop rclcpp std_msgs amr_interfaces)
+
+add_executable(safety_arbitrator src/safety_arbitrator.cpp)
+ament_target_dependencies(safety_arbitrator rclcpp std_msgs)
+
+
 ament_python_install_package(${PROJECT_NAME})
 
 install(
@@ -43,6 +52,8 @@ install(TARGETS
   noisy_controller
   twist_relay
   lidar_safety_stop
+  ultrasonic_safety_stop
+  safety_arbitrator
   DESTINATION lib/${PROJECT_NAME}
 )
 
