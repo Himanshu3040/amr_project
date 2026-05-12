@@ -22,7 +22,7 @@
   <xacro:property name="wheel_width"      value="0.050"/>
   <xacro:property name="wheel_mass"       value="1"/>
 
-  <xacro:property name="wheel_separation" value="0.460"/>
+  <xacro:property name="wheel_separation" value="0.480"/>
   
   <xacro:property name="caster_radius"    value="0.020"/>
   <xacro:property name="caster_mass"      value="1"/>
@@ -318,7 +318,7 @@
   <joint name="Front_Bumper_Joint" type="prismatic">
     <parent link="base_link"/>
     <child  link="Front_Bumper"/>
-    <origin xyz="0.328 0.00225 -0.008" rpy="0 0 0"/>
+    <origin xyz="0.323 0.00125 -0.007" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit lower="-0.01" upper="0" effort="20" velocity="0.1"/>
   </joint>
@@ -355,7 +355,7 @@
   <joint name="Rear_Bumper_Joint" type="prismatic">
     <parent link="base_link"/>
     <child  link="Rear_Bumper"/>
-    <origin xyz="-0.20413 0.00225 -0.008" rpy="0 0 0"/>
+    <origin xyz="-0.20413 0.00125 -0.007" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit lower="0" upper="0.01" effort="20" velocity="0.1"/>
   </joint>

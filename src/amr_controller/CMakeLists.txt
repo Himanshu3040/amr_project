@@ -12,6 +12,9 @@ find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(twist_mux_msgs REQUIRED) 
+find_package(rclcpp_action REQUIRED)
+find_package(visualization_msgs REQUIRED)
 
 include_directories(include)
 include_directories(${EIGEN3_INCLUDE_DIR})
@@ -25,6 +28,9 @@ ament_target_dependencies(noisy_controller rclcpp geometry_msgs sensor_msgs nav_
 add_executable(twist_relay src/twist_relay.cpp)
 ament_target_dependencies(twist_relay rclcpp geometry_msgs)
 
+add_executable(lidar_safety_stop src/lidar_safety_stop.cpp)
+ament_target_dependencies(lidar_safety_stop rclcpp std_msgs sensor_msgs geometry_msgs twist_mux_msgs rclcpp_action visualization_msgs)
+
 ament_python_install_package(${PROJECT_NAME})
 
 install(
@@ -36,6 +42,7 @@ install(TARGETS
   simple_controller
   noisy_controller
   twist_relay
+  lidar_safety_stop
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -48,6 +55,7 @@ install(PROGRAMS
   ${PROJECT_NAME}/simple_controller.py
   ${PROJECT_NAME}/noisy_controller.py
   ${PROJECT_NAME}/twist_relay.py
+  ${PROJECT_NAME}/lidar_safety_stop.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

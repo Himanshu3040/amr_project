@@ -15,7 +15,7 @@ SimpleController::SimpleController(const std::string& name)
                                   , theta_(0.0)
 {
     declare_parameter("wheel_radius", 0.075);
-    declare_parameter("wheel_separation", 0.460);
+    declare_parameter("wheel_separation", 0.480);
     wheel_radius_ = get_parameter("wheel_radius").as_double();
     wheel_separation_ = get_parameter("wheel_separation").as_double();
     RCLCPP_INFO_STREAM(get_logger(), "Using wheel radius " << wheel_radius_);
