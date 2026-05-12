@@ -18,13 +18,13 @@ class State(Enum):
     DANGER = 2
 
 
-class SafetyStop(Node):
+class LidarSafetyStop(Node):
     def __init__(self):
         super().__init__('safety_stop_node')
         self.declare_parameter('warning_distance', 0.6)
         self.declare_parameter('danger_distance', 0.4)
         self.declare_parameter('scan_topic', 'scan')
-        self.declare_parameter('safety_stop_topic', 'safety_stop')
+        self.declare_parameter('safety_stop_topic', 'lidar_safety_stop')
         self.warning_distance = self.get_parameter('warning_distance').get_parameter_value().double_value
         self.danger_distance = self.get_parameter('danger_distance').get_parameter_value().double_value
         self.scan_topic = self.get_parameter('scan_topic').get_parameter_value().string_value
@@ -92,7 +92,6 @@ class SafetyStop(Node):
 
                 if range_value <= self.danger_distance:
                     self.state = State.DANGER
-                    # Stop immediately!
                     break
 
         if self.state != self.prev_state:
@@ -128,7 +127,7 @@ class SafetyStop(Node):
 
 def main():
     rclpy.init()
-    node = SafetyStop()
+    node = LidarSafetyStop()
     rclpy.spin(node)
     rclpy.shutdown()
 

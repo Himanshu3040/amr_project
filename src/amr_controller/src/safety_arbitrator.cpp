@@ -6,22 +6,6 @@
 
 using std::placeholders::_1;
 
-/*
- * SafetyArbitrator Node
- *
- * Merges all safety stop signals into one final /safety_stop topic
- * that twist_mux uses as a lock (priority 255).
- *
- * Logic: publishes true  (STOP)  if ANY safety source is true
- *        publishes false (CLEAR) only if ALL safety sources are false
- *
- * Current sources:
- *   /lidar_safety_stop       → from lidar_safety_stop_node
- *   /ultrasonic_safety_stop  → from ultrasonic_safety_stop_node
- *
- * Output:
- *   /safety_stop  [std_msgs/Bool] → consumed by twist_mux as a lock
- */
 
 class SafetyArbitrator : public rclcpp::Node
 {
