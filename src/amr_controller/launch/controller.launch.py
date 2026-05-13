@@ -179,17 +179,17 @@ def generate_launch_description():
     )
     
     bumper_safety_stop_node = Node(
-    package="amr_controller",
-    executable="bumper_safety_stop",
-    name="bumper_safety_stop_node",
-    output="screen",
-    parameters=[{
-        "bumper_safety_stop_topic": "bumper_safety_stop",
-        "front_bumper_joint":       "Front_Bumper_Joint",
-        "rear_bumper_joint":        "Rear_Bumper_Joint",
-        "press_threshold":          0.002,
-    }]
-)
+        package="amr_controller",
+        executable="bumper_safety_stop",
+        name="bumper_safety_stop_node",
+        output="screen",
+        parameters=[{
+            "bumper_safety_stop_topic": "bumper_safety_stop",
+            "front_bumper_joint":       "Front_Bumper_Joint",
+            "rear_bumper_joint":        "Rear_Bumper_Joint",
+            "press_threshold":          0.002,
+        }]
+    )
 
     safety_arbitrator_node = Node(
         package="amr_controller",
@@ -203,10 +203,6 @@ def generate_launch_description():
             "safety_stop_topic":            "safety_stop",
         }]
     )   
-    
-    
-    
-    
 
     return LaunchDescription(
         [
