@@ -1,0 +1,7 @@
+turbo_scaler:
+  ros__parameters:
+    linear_min  : 0.2
+    linear_max  : 1.0
+    angular_min : 0.5
+    angular_max : 5.0
+    steps       : 2

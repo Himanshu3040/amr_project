@@ -34,11 +34,11 @@ def generate_launch_description():
         }.items(),
     )
     
-    joystick = IncludeLaunchDescription(
+    teleop = IncludeLaunchDescription(
         os.path.join(
             get_package_share_directory("amr_controller"),
             "launch",
-            "joystick_teleop.launch.py"
+            "teleop.launch.py"
         ),
         launch_arguments={
             "use_sim_time": "True"
@@ -49,5 +49,5 @@ def generate_launch_description():
         use_slam_arg,
         gazebo,
         controller,
-        joystick
+        teleop
     ])

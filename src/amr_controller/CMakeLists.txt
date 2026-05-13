@@ -39,6 +39,11 @@ ament_target_dependencies(ultrasonic_safety_stop rclcpp std_msgs amr_interfaces)
 add_executable(safety_arbitrator src/safety_arbitrator.cpp)
 ament_target_dependencies(safety_arbitrator rclcpp std_msgs)
 
+add_executable(turbo_scaler src/turbo_scaler.cpp)
+ament_target_dependencies(turbo_scaler rclcpp geometry_msgs twist_mux_msgs rclcpp_action)
+
+add_executable(bumper_safety_stop src/bumper_safety_stop.cpp)
+ament_target_dependencies(bumper_safety_stop rclcpp sensor_msgs std_msgs)
 
 ament_python_install_package(${PROJECT_NAME})
 
@@ -53,7 +58,9 @@ install(TARGETS
   twist_relay
   lidar_safety_stop
   ultrasonic_safety_stop
+  bumper_safety_stop
   safety_arbitrator
+  turbo_scaler
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -67,6 +74,7 @@ install(PROGRAMS
   ${PROJECT_NAME}/noisy_controller.py
   ${PROJECT_NAME}/twist_relay.py
   ${PROJECT_NAME}/lidar_safety_stop.py
+  ${PROJECT_NAME}/turbo_scaler.py 
   DESTINATION lib/${PROJECT_NAME}
 )
 

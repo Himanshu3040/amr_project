@@ -148,18 +148,12 @@ def generate_launch_description():
                 "ros2", "topic", "pub", "--once",
                 "/bumper_controller/commands",
                 "std_msgs/msg/Float64MultiArray",
-                # index 0 = Front_Bumper_Joint → 0.0 (fully extended)
-                # index 1 = Rear_Bumper_Joint  → 0.0 (fully extended)
                 "{data: [0.0, 0.0]}"
             ],
             output="screen",
         )]
     )
 
-     # ── Lidar Safety Stop ──────────────────────────────────────────────────────
-    # Reads /scan, classifies danger zone, publishes to /lidar_safety_stop.
-    # Topic renamed from default "safety_stop" via parameter so it feeds
-    # the arbitrator instead of twist_mux directly.
     lidar_safety_stop_node = Node(
         package="amr_controller",
         executable="lidar_safety_stop",
@@ -170,11 +164,6 @@ def generate_launch_description():
         }]
     )
 
-    # ── Ultrasonic Safety Stop ─────────────────────────────────────────────────
-    # Reads /ultrasonic_raw from ethernet_bridge_node (STM32 via UDP).
-    # Applies per-direction thresholds: front=250mm, rear=130mm.
-    # Publishes /ultrasonic_safety_stop [std_msgs/Bool]
-    # Publishes /ultrasonic_zones       [amr_interfaces/UltrasonicZones]
     ultrasonic_safety_stop_node = Node(
         package="amr_controller",
         executable="ultrasonic_safety_stop",
@@ -188,12 +177,20 @@ def generate_launch_description():
             "ultrasonic_zones_topic":       "ultrasonic_zones",
         }]
     )
+    
+    bumper_safety_stop_node = Node(
+    package="amr_controller",
+    executable="bumper_safety_stop",
+    name="bumper_safety_stop_node",
+    output="screen",
+    parameters=[{
+        "bumper_safety_stop_topic": "bumper_safety_stop",
+        "front_bumper_joint":       "Front_Bumper_Joint",
+        "rear_bumper_joint":        "Rear_Bumper_Joint",
+        "press_threshold":          0.002,
+    }]
+)
 
-    # ── Safety Arbitrator ──────────────────────────────────────────────────────
-    # Subscribes to /lidar_safety_stop AND /ultrasonic_safety_stop.
-    # Publishes true to /safety_stop if EITHER is true.
-    # /safety_stop is the twist_mux lock (priority 255) — nothing moves
-    # unless both sensors are clear.
     safety_arbitrator_node = Node(
         package="amr_controller",
         executable="safety_arbitrator",
@@ -202,9 +199,12 @@ def generate_launch_description():
         parameters=[{
             "lidar_safety_stop_topic":      "lidar_safety_stop",
             "ultrasonic_safety_stop_topic": "ultrasonic_safety_stop",
+            "bumper_safety_stop_topic":     "bumper_safety_stop", 
             "safety_stop_topic":            "safety_stop",
         }]
     )   
+    
+    
     
     
 
@@ -225,6 +225,7 @@ def generate_launch_description():
             bumper_init,
             lidar_safety_stop_node,
             ultrasonic_safety_stop_node,
+            bumper_safety_stop_node,
             safety_arbitrator_node,
         ]
     )
