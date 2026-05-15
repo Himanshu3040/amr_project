@@ -45,6 +45,9 @@ ament_target_dependencies(turbo_scaler rclcpp geometry_msgs twist_mux_msgs rclcp
 add_executable(bumper_retreat src/bumper_retreat.cpp)
 ament_target_dependencies(bumper_retreat rclcpp sensor_msgs std_msgs geometry_msgs)
 
+add_executable(ultrasonic_sim_bridge src/ultrasonic_sim_bridge.cpp)
+ament_target_dependencies(ultrasonic_sim_bridge rclcpp sensor_msgs amr_interfaces)
+
 ament_python_install_package(${PROJECT_NAME})
 
 install(
@@ -61,6 +64,7 @@ install(TARGETS
   bumper_retreat
   safety_arbitrator
   turbo_scaler
+  ultrasonic_sim_bridge
   DESTINATION lib/${PROJECT_NAME}
 )
 

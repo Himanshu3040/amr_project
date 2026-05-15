@@ -178,6 +178,14 @@ def generate_launch_description():
         }]
     )
     
+    ultrasonic_sim_bridge_node = Node(
+        package="amr_controller",
+        executable="ultrasonic_sim_bridge",
+        name="ultrasonic_sim_bridge_node",
+        output="screen",
+        condition=IfCondition(use_sim_time),
+    )
+    
     bumper_retreat_node = Node(
         package="amr_controller",
         executable="bumper_retreat",        # matches CMakeLists
@@ -222,6 +230,7 @@ def generate_launch_description():
             bumper_init,
             lidar_safety_stop_node,
             ultrasonic_safety_stop_node,
+            ultrasonic_sim_bridge_node,
             bumper_retreat_node,
             safety_arbitrator_node,
         ]

@@ -55,11 +55,11 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        Base_Footprint:
-          Value: true
-        Base_Link:
+        Caster:
           Value: true
         Front_Bumper:
+          Value: true
+        IMU_Link:
           Value: true
         Left_Wheel:
           Value: true
@@ -69,9 +69,17 @@ Visualization Manager:
           Value: true
         Right_Wheel:
           Value: true
-        caster:
+        Ultrasonic_1:
           Value: true
-        imu_link:
+        Ultrasonic_2:
+          Value: true
+        Ultrasonic_3:
+          Value: true
+        Ultrasonic_4:
+          Value: true
+        base_footprint:
+          Value: true
+        base_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -79,9 +87,13 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        Base_Footprint:
-          Base_Link:
+        base_footprint:
+          base_link:
+            Caster:
+              {}
             Front_Bumper:
+              {}
+            IMU_Link:
               {}
             Left_Wheel:
               {}
@@ -91,9 +103,13 @@ Visualization Manager:
               {}
             Right_Wheel:
               {}
-            caster:
+            Ultrasonic_1:
               {}
-            imu_link:
+            Ultrasonic_2:
+              {}
+            Ultrasonic_3:
+              {}
+            Ultrasonic_4:
               {}
       Update Interval: 0
       Value: true
@@ -111,11 +127,7 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
-        Base_Footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        Base_Link:
+        Caster:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -124,6 +136,11 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Front_Bumper:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        IMU_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -149,12 +166,31 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        caster:
+        Ultrasonic_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        imu_link:
+        Ultrasonic_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Ultrasonic_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Ultrasonic_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -170,7 +206,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: Base_Footprint
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -213,25 +249,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.4640157222747803
+      Distance: 2.0272183418273926
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.043853580951690674
-        Y: -0.011949390172958374
-        Z: 0.12044280767440796
+        X: -0.21188820898532867
+        Y: -0.10292660444974899
+        Z: 0.03614760562777519
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2253987193107605
+      Pitch: 0.01539889071136713
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.1503981351852417
+      Yaw: 1.4554215669631958
     Saved: ~
 Window Geometry:
   Displays:

@@ -334,7 +334,6 @@
     <limit lower="0" upper="0.01" effort="20" velocity="0.1"/>
   </joint>
 
-<<<<<<< HEAD
 
   <!-- ==================== Ultrasonic 1 ==================== -->
 
@@ -347,7 +346,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_1.STL"/>
       </geometry>
       <material name="">
         <color rgba="0 0 0 1" />
@@ -356,7 +355,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_1.STL"/>
       </geometry>
     </collision>
   </link>
@@ -364,11 +363,13 @@
   <joint name="Ultrasonic_1_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_1"/>
-    <origin xyz="-0.4 0.0 0.01" rpy="0 0 0"/>
+    <origin  xyz="0.326401755379924 0.142760073109966 0.062124192966864" rpy="0 0 0"/>
   </joint>
 
   
   <!-- ==================== Ultrasonic 2 ==================== -->
+
+
   <link name="Ultrasonic_2">
     <xacro:box_inertia m="${ultrasonic_mass}"
                        l="${ultrasonic_length}"
@@ -377,16 +378,16 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_2.STL"/>
       </geometry>
       <material name="">
-        <color rgba="1 1 1 1" />
+        <color rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_2.STL"/>
       </geometry>
     </collision>
   </link>
@@ -394,99 +395,71 @@
   <joint name="Ultrasonic_2_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_2"/>
-    <origin xyz="0.4 0.0 0.01" rpy="0 0 0"/>
+    <origin xyz="0.327164794627501 -0.141331027587016 0.062124192966864" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ==================== Ultrasonic 3 ==================== -->
+
+
+  <link name="Ultrasonic_3">
+    <xacro:box_inertia m="${ultrasonic_mass}"
+                       l="${ultrasonic_length}"
+                       w="${ultrasonic_width}"
+                       h="${ultrasonic_height}"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_3.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_3.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Ultrasonic_3_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_3"/>
+    <origin xyz="-0.207113047596706 -0.14142793170944 0.062124192966864" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ==================== Ultrasonic 4 ==================== -->
+
+
+  <link name="Ultrasonic_4">
+    <xacro:box_inertia m="${ultrasonic_mass}"
+                       l="${ultrasonic_length}"
+                       w="${ultrasonic_width}"
+                       h="${ultrasonic_height}"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_4.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_4.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Ultrasonic_4_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_4"/>
+    <origin xyz="-0.20645349231444 0.142663168987541 0.062124192966864" rpy="0 0 0"/>
   </joint>
 
 </robot>
-=======
-<!-- ==================== ULTRASONIC SENSORS ==================== -->
-  <!-- Simulation only — real sensors are on STM32 via ethernet    -->
-  <!-- Blue boxes = front sensors, Orange boxes = rear sensors     -->
-  <!-- Adjust xyz origins to match physical sensor positions       -->
-
-  <!-- Front Left Ultrasonic (index 0) -->
-  <link name="Ultrasonic_FL_Link">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0"
-               iyy="0.000001" iyz="0"
-               izz="0.000001"/>
-    </inertial>
-    <visual>
-      <geometry><box size="0.02 0.02 0.02"/></geometry>
-      <material name="ultrasonic_front">
-        <color rgba="0 0 1 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="Ultrasonic_FL_Joint" type="fixed">
-    <parent link="base_link"/>
-    <child  link="Ultrasonic_FL_Link"/>
-    <origin xyz="0.300  0.150  0.090" rpy="0 0 0"/>
-  </joint>
-
-  <!-- Front Right Ultrasonic (index 1) -->
-  <link name="Ultrasonic_FR_Link">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0"
-               iyy="0.000001" iyz="0"
-               izz="0.000001"/>
-    </inertial>
-    <visual>
-      <geometry><box size="0.02 0.02 0.02"/></geometry>
-      <material name="ultrasonic_front">
-        <color rgba="0 0 1 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="Ultrasonic_FR_Joint" type="fixed">
-    <parent link="base_link"/>
-    <child  link="Ultrasonic_FR_Link"/>
-    <origin xyz="0.300 -0.150  0.090" rpy="0 0 0"/>
-  </joint>
-
-  <!-- Rear Left Ultrasonic (index 2) -->
-  <link name="Ultrasonic_RL_Link">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0"
-               iyy="0.000001" iyz="0"
-               izz="0.000001"/>
-    </inertial>
-    <visual>
-      <geometry><box size="0.02 0.02 0.02"/></geometry>
-      <material name="ultrasonic_rear">
-        <color rgba="1 0.5 0 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="Ultrasonic_RL_Joint" type="fixed">
-    <parent link="base_link"/>
-    <child  link="Ultrasonic_RL_Link"/>
-    <origin xyz="-0.200  0.150  0.090" rpy="0 0 ${pi}"/>
-  </joint>
-
-  <!-- Rear Right Ultrasonic (index 3) -->
-  <link name="Ultrasonic_RR_Link">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0"
-               iyy="0.000001" iyz="0"
-               izz="0.000001"/>
-    </inertial>
-    <visual>
-      <geometry><box size="0.02 0.02 0.02"/></geometry>
-      <material name="ultrasonic_rear">
-        <color rgba="1 0.5 0 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="Ultrasonic_RR_Joint" type="fixed">
-    <parent link="base_link"/>
-    <child  link="Ultrasonic_RR_Link"/>
-    <origin xyz="-0.200 -0.150  0.090" rpy="0 0 ${pi}"/>
-  </joint>
-
-</robot>
->>>>>>> e77684513a46a55a4d31b0126a36f1a187dda99b
