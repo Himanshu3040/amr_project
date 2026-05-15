@@ -16,7 +16,7 @@
   <xacro:property name="base_length"   value="0.600"/>
   <xacro:property name="base_width"    value="0.500"/>
   <xacro:property name="base_height"   value="0.180"/>
-  <xacro:property name="base_mass"     value="30.0"/>
+  <xacro:property name="base_mass"     value="20.0"/>
 
   <xacro:property name="wheel_radius"     value="0.075"/>
   <xacro:property name="wheel_width"      value="0.050"/>
@@ -27,14 +27,25 @@
   <xacro:property name="caster_radius"    value="0.020"/>
   <xacro:property name="caster_mass"      value="1"/>
 
-  <xacro:property name="lidar_x"         value="0.08"/>
-  <xacro:property name="lidar_y"         value="0.08"/>
-  <xacro:property name="lidar_z"         value="0.07"/>
-  <xacro:property name="lidar_mass"         value="1"/>
+  <xacro:property name="lidar_length"     value="0.08"/>
+  <xacro:property name="lidar_width"      value="0.08"/>
+  <xacro:property name="lidar_height"     value="0.07"/>
+  <xacro:property name="lidar_mass"       value="1"/>
 
-  <xacro:property name="imu_x"           value="0.04331"/>
-  <xacro:property name="imu_y"           value="0.0"/>
-  <xacro:property name="imu_z"           value="1"/>
+  <xacro:property name="imu_length"       value="0.05"/>
+  <xacro:property name="imu_width"        value="0.05"/>
+  <xacro:property name="imu_height"       value="0.005"/>
+  <xacro:property name="imu_mass"         value="1"/>
+
+  <xacro:property name="bumper_length"       value="0.05"/>
+  <xacro:property name="bumper_width"        value="0.6"/>
+  <xacro:property name="bumper_height"       value="0.05"/>
+  <xacro:property name="bumper_mass"         value="1"/>
+
+  <xacro:property name="ultrasonic_length"       value="0.02"/>
+  <xacro:property name="ultrasonic_width"        value="0.05"/>
+  <xacro:property name="ultrasonic_height"       value="0.02"/>
+  <xacro:property name="ultrasonic_mass"         value="0.01"/>
 
   <xacro:macro name="box_inertia" params="m l w h">
     <inertial>
@@ -78,21 +89,16 @@
                        w="${base_width}"
                        h="${base_height}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Base_Link.STL" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
+      <material name="">
         <color rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Base_Link.STL" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -114,16 +120,12 @@
                             r="${wheel_radius}"
                             h="${wheel_width}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Right_Wheel.STL" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.9 0 0 1" />
+      <material name="">
+        <color rgba="0.9 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -145,21 +147,18 @@
 
   <!-- ==================== Left Wheel ==================== -->
 
+
   <link name="Left_Wheel">
     <xacro:cylinder_inertia m="${wheel_mass}"
                             r="${wheel_radius}"
                             h="${wheel_width}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Left_Wheel.STL" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.9 0 0 1" />
+      <material name="">
+        <color rgba="0.9 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -185,14 +184,11 @@
   <link name="Caster">
     <xacro:sphere_inertia m="${caster_mass}" r="${caster_radius}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Caster.STL" scale="0.001 0.001 0.001" /> 
       </geometry>
-      <material
-        name="">
+      <material name="">
         <color rgba="0.6 0.6 0.6 1" />
       </material>
     </visual>
@@ -211,25 +207,21 @@
   </joint>
 
 
-<!-- ==================== Lidar ==================== -->
+  <!-- ==================== Lidar ==================== -->
 
 
   <link name="Lidar_Link">
     <xacro:box_inertia m="${lidar_mass}"
-                       l="${lidar_x}"
-                       w="${lidar_y}"
-                       h="${lidar_z}"/>
+                       l="${lidar_length}"
+                       w="${lidar_width}"
+                       h="${lidar_height}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 ${pi}" />
+      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Lidar.STL" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.2 0.2 0.2 1" />
+      <material name="">
+        <color rgba="0.2 0.2 0.2 1" />
       </material>
     </visual>
     <collision>
@@ -252,23 +244,17 @@
 
 
   <link name="IMU_Link">
-    <inertial>
-      <mass value="0.005"/>
-      <inertia ixx="0.000001" ixy="0" ixz="0"
-               iyy="0.000001" iyz="0"
-               izz="0.000001"/>
-    </inertial>
+    <xacro:box_inertia m="${imu_mass}"
+                       l="${imu_length}"
+                       w="${imu_width}"
+                       h="${imu_height}"/>
     <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/IMU.STL" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0 0 0 1"/>
+      <material name="">
+        <color rgba="0 0 0 1"/>
       </material>
     </visual>
     <collision>
@@ -288,23 +274,17 @@
 
   <!-- ==================== FRONT BUMPER ==================== -->
   <link name="Front_Bumper">
-    <inertial>
-      <mass value="0.192323065808925" />
-      <inertia
-        ixx="0.006519743425104"
-        ixy="-9.22815526894101E-09"
-        ixz="-3.89179634633383E-05"
-        iyy="0.000789318174926477"
-        iyz="-1.36378898549255E-09"
-        izz="0.0072231575614127" />
-    </inertial>
+    <xacro:box_inertia m="${bumper_mass}"
+                       l="${bumper_length}"
+                       w="${bumper_width}"
+                       h="${bumper_height}"/>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Front_Bumper.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="">
-        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        <color rgba="0.8 0.8 0.8 1" />
       </material>
     </visual>
     <collision>
@@ -325,23 +305,17 @@
 
   <!-- ==================== REAR BUMPER ==================== -->
   <link name="Rear_Bumper">
-    <inertial>
-      <mass value="0.14844816742278" />
-      <inertia
-        ixx="0.00438148818103443"
-        ixy="-4.75358055127294E-11"
-        ixz="2.59046953973231E-05"
-        iyy="0.00045961717701518"
-        iyz="-7.97996736519186E-13"
-        izz="0.00477574022877043" />
-    </inertial>
+    <xacro:box_inertia m="${bumper_mass}"
+                       l="${bumper_length}"
+                       w="${bumper_width}"
+                       h="${bumper_height}"/>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="package://amr_description/meshes/Rear_Bumper.STL" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="">
-        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        <color rgba="0.8 0.8 0.8 1" />
       </material>
     </visual>
     <collision>
@@ -358,6 +332,68 @@
     <origin xyz="-0.20913 0.00125 -0.007" rpy="0 0 0"/>
     <axis xyz="1 0 0"/>
     <limit lower="0" upper="0.01" effort="20" velocity="0.1"/>
+  </joint>
+
+
+  <!-- ==================== Ultrasonic 1 ==================== -->
+
+
+  <link name="Ultrasonic_1">
+    <xacro:box_inertia m="${ultrasonic_mass}"
+                       l="${ultrasonic_length}"
+                       w="${ultrasonic_width}"
+                       h="${ultrasonic_height}"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Ultrasonic_1_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_1"/>
+    <origin xyz="-0.4 0.0 0.01" rpy="0 0 0"/>
+  </joint>
+
+  
+  <!-- ==================== Ultrasonic 2 ==================== -->
+  <link name="Ultrasonic_2">
+    <xacro:box_inertia m="${ultrasonic_mass}"
+                       l="${ultrasonic_length}"
+                       w="${ultrasonic_width}"
+                       h="${ultrasonic_height}"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Ultrasonic_2_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_2"/>
+    <origin xyz="0.4 0.0 0.01" rpy="0 0 0"/>
   </joint>
 
 </robot>
