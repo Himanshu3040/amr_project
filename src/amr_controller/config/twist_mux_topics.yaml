@@ -10,3 +10,7 @@ twist_mux:
         topic   : key_vel
         timeout : 0.5
         priority: 50
+      bumper_retreat:
+        topic   : bumper_retreat_cmd_vel
+        timeout : 2.0
+        priority: 150 

@@ -178,16 +178,18 @@ def generate_launch_description():
         }]
     )
     
-    bumper_safety_stop_node = Node(
+    bumper_retreat_node = Node(
         package="amr_controller",
-        executable="bumper_safety_stop",
-        name="bumper_safety_stop_node",
+        executable="bumper_retreat",        # matches CMakeLists
+        name="bumper_retreat_node",
         output="screen",
         parameters=[{
-            "bumper_safety_stop_topic": "bumper_safety_stop",
-            "front_bumper_joint":       "Front_Bumper_Joint",
-            "rear_bumper_joint":        "Rear_Bumper_Joint",
-            "press_threshold":          0.002,
+            "bumper_retreat_topic": "bumper_retreat_cmd_vel",
+            "front_bumper_joint":   "Front_Bumper_Joint",
+            "rear_bumper_joint":    "Rear_Bumper_Joint",
+            "press_threshold":      0.01,
+            "retreat_speed":        0.9,
+            "retreat_duration":     1.0,
         }]
     )
 
@@ -199,7 +201,6 @@ def generate_launch_description():
         parameters=[{
             "lidar_safety_stop_topic":      "lidar_safety_stop",
             "ultrasonic_safety_stop_topic": "ultrasonic_safety_stop",
-            "bumper_safety_stop_topic":     "bumper_safety_stop", 
             "safety_stop_topic":            "safety_stop",
         }]
     )   
@@ -221,7 +222,7 @@ def generate_launch_description():
             bumper_init,
             lidar_safety_stop_node,
             ultrasonic_safety_stop_node,
-            bumper_safety_stop_node,
+            bumper_retreat_node,
             safety_arbitrator_node,
         ]
     )
