@@ -334,6 +334,7 @@
     <limit lower="0" upper="0.01" effort="20" velocity="0.1"/>
   </joint>
 
+<<<<<<< HEAD
 
   <!-- ==================== Ultrasonic 1 ==================== -->
 
@@ -397,3 +398,95 @@
   </joint>
 
 </robot>
+=======
+<!-- ==================== ULTRASONIC SENSORS ==================== -->
+  <!-- Simulation only — real sensors are on STM32 via ethernet    -->
+  <!-- Blue boxes = front sensors, Orange boxes = rear sensors     -->
+  <!-- Adjust xyz origins to match physical sensor positions       -->
+
+  <!-- Front Left Ultrasonic (index 0) -->
+  <link name="Ultrasonic_FL_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0"
+               iyy="0.000001" iyz="0"
+               izz="0.000001"/>
+    </inertial>
+    <visual>
+      <geometry><box size="0.02 0.02 0.02"/></geometry>
+      <material name="ultrasonic_front">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="Ultrasonic_FL_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_FL_Link"/>
+    <origin xyz="0.300  0.150  0.090" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Front Right Ultrasonic (index 1) -->
+  <link name="Ultrasonic_FR_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0"
+               iyy="0.000001" iyz="0"
+               izz="0.000001"/>
+    </inertial>
+    <visual>
+      <geometry><box size="0.02 0.02 0.02"/></geometry>
+      <material name="ultrasonic_front">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="Ultrasonic_FR_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_FR_Link"/>
+    <origin xyz="0.300 -0.150  0.090" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Rear Left Ultrasonic (index 2) -->
+  <link name="Ultrasonic_RL_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0"
+               iyy="0.000001" iyz="0"
+               izz="0.000001"/>
+    </inertial>
+    <visual>
+      <geometry><box size="0.02 0.02 0.02"/></geometry>
+      <material name="ultrasonic_rear">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="Ultrasonic_RL_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_RL_Link"/>
+    <origin xyz="-0.200  0.150  0.090" rpy="0 0 ${pi}"/>
+  </joint>
+
+  <!-- Rear Right Ultrasonic (index 3) -->
+  <link name="Ultrasonic_RR_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0"
+               iyy="0.000001" iyz="0"
+               izz="0.000001"/>
+    </inertial>
+    <visual>
+      <geometry><box size="0.02 0.02 0.02"/></geometry>
+      <material name="ultrasonic_rear">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="Ultrasonic_RR_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_RR_Link"/>
+    <origin xyz="-0.200 -0.150  0.090" rpy="0 0 ${pi}"/>
+  </joint>
+
+</robot>
+>>>>>>> e77684513a46a55a4d31b0126a36f1a187dda99b
