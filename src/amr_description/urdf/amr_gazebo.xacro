@@ -128,4 +128,134 @@
     </sensor>
   </gazebo>
 
+<!-- ==================== ULTRASONIC SENSOR PLUGINS ==================== -->
+  <!-- Each sensor uses gpu_lidar with 1 sample — identical behaviour     -->
+  <!-- to a real ultrasonic sensor for our distance-threshold purposes.   -->
+  <!-- Topics are individual per sensor; ultrasonic_sim_bridge.py         -->
+  <!-- combines them into /ultrasonic_raw matching the real STM32 output. -->
+
+  <!-- Front Left (index 0) -->
+  <gazebo reference="Ultrasonic_FL_Link">
+    <sensor name="ultrasonic_fl" type="gpu_lidar">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>ultrasonic_fl_raw</topic>
+      <gz_frame_id>Ultrasonic_FL_Link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.030</min>
+          <max>5.000</max>
+          <resolution>0.001</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <!-- Front Right (index 1) -->
+  <gazebo reference="Ultrasonic_FR_Link">
+    <sensor name="ultrasonic_fr" type="gpu_lidar">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>ultrasonic_fr_raw</topic>
+      <gz_frame_id>Ultrasonic_FR_Link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.030</min>
+          <max>5.000</max>
+          <resolution>0.001</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <!-- Rear Left (index 2) -->
+  <gazebo reference="Ultrasonic_RL_Link">
+    <sensor name="ultrasonic_rl" type="gpu_lidar">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>ultrasonic_rl_raw</topic>
+      <gz_frame_id>Ultrasonic_RL_Link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.030</min>
+          <max>5.000</max>
+          <resolution>0.001</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <!-- Rear Right (index 3) -->
+  <gazebo reference="Ultrasonic_RR_Link">
+    <sensor name="ultrasonic_rr" type="gpu_lidar">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>ultrasonic_rr_raw</topic>
+      <gz_frame_id>Ultrasonic_RR_Link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.030</min>
+          <max>5.000</max>
+          <resolution>0.001</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
 </robot>
