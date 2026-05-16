@@ -171,7 +171,7 @@ def generate_launch_description():
         output="screen",
         parameters=[{
             "front_protective_distance_mm": 250.0,
-            "rear_protective_distance_mm":  130.0,
+            "rear_protective_distance_mm":  300.0,
             "ultrasonic_raw_topic":         "ultrasonic_raw",
             "ultrasonic_safety_stop_topic": "ultrasonic_safety_stop",
             "ultrasonic_zones_topic":       "ultrasonic_zones",

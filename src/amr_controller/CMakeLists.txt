@@ -34,7 +34,7 @@ add_executable(lidar_safety_stop src/lidar_safety_stop.cpp)
 ament_target_dependencies(lidar_safety_stop rclcpp std_msgs sensor_msgs geometry_msgs twist_mux_msgs rclcpp_action visualization_msgs)
 
 add_executable(ultrasonic_safety_stop src/ultrasonic_safety_stop.cpp)
-ament_target_dependencies(ultrasonic_safety_stop rclcpp std_msgs amr_interfaces)
+ament_target_dependencies(ultrasonic_safety_stop rclcpp std_msgs amr_interfaces visualization_msgs) 
 
 add_executable(safety_arbitrator src/safety_arbitrator.cpp)
 ament_target_dependencies(safety_arbitrator rclcpp std_msgs)

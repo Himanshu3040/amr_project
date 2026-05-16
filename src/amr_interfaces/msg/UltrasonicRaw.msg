@@ -12,4 +12,4 @@
 # Valid range: 30mm to 5000mm (DYP-A21 spec)
 
 std_msgs/Header header
-float32[4] distances_mm
+float32[5] distances_mm

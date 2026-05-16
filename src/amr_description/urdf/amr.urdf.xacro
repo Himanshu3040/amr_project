@@ -363,7 +363,7 @@
   <joint name="Ultrasonic_1_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_1"/>
-    <origin  xyz="0.326401755379924 0.142760073109966 0.062124192966864" rpy="0 0 0"/>
+    <origin  xyz="0.327 0.1445 0.062124192966864" rpy="0 0 0"/>
   </joint>
 
   
@@ -395,7 +395,7 @@
   <joint name="Ultrasonic_2_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_2"/>
-    <origin xyz="0.327164794627501 -0.141331027587016 0.062124192966864" rpy="0 0 0"/>
+    <origin xyz="0.3277 -0.1405 0.062124192966864" rpy="0 0 0"/>
   </joint>
 
 
@@ -427,7 +427,7 @@
   <joint name="Ultrasonic_3_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_3"/>
-    <origin xyz="-0.207113047596706 -0.14142793170944 0.062124192966864" rpy="0 0 0"/>
+    <origin xyz="-0.208 -0.140 0.062124192966864" rpy="0 0 0"/>
   </joint>
 
 
@@ -459,7 +459,38 @@
   <joint name="Ultrasonic_4_Joint" type="fixed">
     <parent link="base_link"/>
     <child  link="Ultrasonic_4"/>
-    <origin xyz="-0.20645349231444 0.142663168987541 0.062124192966864" rpy="0 0 0"/>
+    <origin xyz="-0.207 0.144 0.062124192966864" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ==================== Ultrasonic 5 ==================== -->
+
+
+  <link name="Ultrasonic_5">
+    <xacro:box_inertia m="${ultrasonic_mass}"
+                       l="${ultrasonic_length}"
+                       w="${ultrasonic_width}"
+                       h="${ultrasonic_height}"/>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -2.652" />
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_4.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 -2.652"/>
+      <geometry>
+        <mesh filename="package://amr_description/meshes/Ultrasonic_4.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Ultrasonic_5_Joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="Ultrasonic_5"/>
+    <origin xyz="-0.245 0 0.062124192966864" rpy="0 0 3.14159"/>
   </joint>
 
 </robot>

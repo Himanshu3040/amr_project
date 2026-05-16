@@ -138,10 +138,10 @@
       <lidar>
         <scan>
           <horizontal>
-            <samples>1</samples>
+            <samples>40</samples>
             <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
+            <min_angle>0.139</min_angle>
+            <max_angle>0.837</max_angle>
           </horizontal>
           <vertical>
             <samples>1</samples>
@@ -152,7 +152,7 @@
         </scan>
         <range>
           <min>0.030</min>
-          <max>0.300</max>
+          <max>0.500</max>
           <resolution>0.001</resolution>
         </range>
       </lidar>
@@ -169,10 +169,10 @@
       <lidar>
         <scan>
           <horizontal>
-            <samples>1</samples>
+            <samples>40</samples>
             <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
+            <min_angle>-0.837</min_angle>
+            <max_angle>-0.139</max_angle>
           </horizontal>
           <vertical>
             <samples>1</samples>
@@ -183,7 +183,7 @@
         </scan>
         <range>
           <min>0.030</min>
-          <max>0.300</max>
+          <max>0.500</max>
           <resolution>0.001</resolution>
         </range>
       </lidar>
@@ -200,10 +200,10 @@
       <lidar>
         <scan>
           <horizontal>
-            <samples>1</samples>
+            <samples>40</samples>
             <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
+            <min_angle>-3.0</min_angle>
+            <max_angle>-2.3</max_angle>
           </horizontal>
           <vertical>
             <samples>1</samples>
@@ -214,7 +214,7 @@
         </scan>
         <range>
           <min>0.030</min>
-          <max>0.200</max>
+          <max>0.500</max>
           <resolution>0.001</resolution>
         </range>
       </lidar>
@@ -231,10 +231,10 @@
       <lidar>
         <scan>
           <horizontal>
-            <samples>1</samples>
+            <samples>40</samples>
             <resolution>1</resolution>
-            <min_angle>0</min_angle>
-            <max_angle>0</max_angle>
+            <min_angle>2.3</min_angle>
+            <max_angle>3.0</max_angle>
           </horizontal>
           <vertical>
             <samples>1</samples>
@@ -245,7 +245,38 @@
         </scan>
         <range>
           <min>0.030</min>
-          <max>0.200</max>
+          <max>0.500</max>
+          <resolution>0.001</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+    <!-- Rear Middle (index 4) -->
+  <gazebo reference="Ultrasonic_5">
+    <sensor name="ultrasonic_5" type="gpu_lidar">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <topic>/ultrasonic_5_raw</topic>
+      <gz_frame_id>Ultrasonic_5</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>40</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.349</min_angle>
+            <max_angle>0.349</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.030</min>
+          <max>0.500</max>
           <resolution>0.001</resolution>
         </range>
       </lidar>
@@ -253,3 +284,6 @@
   </gazebo>
 
 </robot>
+
+
+

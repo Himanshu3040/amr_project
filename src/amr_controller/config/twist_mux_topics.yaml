@@ -13,4 +13,4 @@ twist_mux:
       bumper_retreat:
         topic   : bumper_retreat_cmd_vel
         timeout : 2.0
-        priority: 150 
+        priority: 250 

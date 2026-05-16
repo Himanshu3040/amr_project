@@ -19,10 +19,10 @@
 std_msgs/Header header
 
 # Raw distances copied from UltrasonicRaw for reference (mm)
-float32[4] distances_mm
+float32[5] distances_mm
 
 # Zone classification per sensor: 0=CLEAR, 1=PROTECTIVE
-int8[4] zones
+int8[5] zones
 
 # Overall robot zone — worst across all 4 sensors
 # If ANY sensor is PROTECTIVE, this is PROTECTIVE
