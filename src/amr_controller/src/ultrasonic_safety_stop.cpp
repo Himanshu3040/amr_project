@@ -46,7 +46,7 @@ public:
   {
     // ── Parameters ───────────────────────────────────────────────────────────
     declare_parameter<double>("front_protective_distance_mm", 250.0);
-    declare_parameter<double>("rear_protective_distance_mm",  300.0);
+    declare_parameter<double>("rear_protective_distance_mm",  250.0);
     declare_parameter<std::string>("ultrasonic_raw_topic",         "ultrasonic_raw");
     declare_parameter<std::string>("ultrasonic_safety_stop_topic", "ultrasonic_safety_stop");
     declare_parameter<std::string>("ultrasonic_zones_topic",       "ultrasonic_zones");

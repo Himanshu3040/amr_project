@@ -1,0 +1,21 @@
+digraph G {
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 50.231\nBuffer length: 4.32\nMost recent transform: 1664.78\nOldest transform: 1660.46\n"];
+"odom" -> "base_footprint_noisy"[label=" Broadcaster: default_authority\nAverage rate: 50.314\nBuffer length: 3.18\nMost recent transform: 1664.78\nOldest transform: 1661.6\n"];
+"base_link" -> "Front_Bumper"[label=" Broadcaster: default_authority\nAverage rate: 17.13\nBuffer length: 2.16\nMost recent transform: 1664.76\nOldest transform: 1662.6\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Left_Wheel"[label=" Broadcaster: default_authority\nAverage rate: 17.13\nBuffer length: 2.16\nMost recent transform: 1664.76\nOldest transform: 1662.6\n"];
+"base_link" -> "Rear_Bumper"[label=" Broadcaster: default_authority\nAverage rate: 17.13\nBuffer length: 2.16\nMost recent transform: 1664.76\nOldest transform: 1662.6\n"];
+"base_link" -> "Right_Wheel"[label=" Broadcaster: default_authority\nAverage rate: 17.13\nBuffer length: 2.16\nMost recent transform: 1664.76\nOldest transform: 1662.6\n"];
+"base_link" -> "Caster"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "IMU_Link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Lidar_Link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Ultrasonic_1"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Ultrasonic_2"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Ultrasonic_3"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Ultrasonic_4"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "Ultrasonic_5"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1779016193.5949636"[ shape=plaintext ] ;
+}->"odom";
+}
