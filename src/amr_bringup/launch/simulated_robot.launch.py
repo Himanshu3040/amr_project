@@ -8,6 +8,7 @@ from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
+    use_slam = LaunchConfiguration("use_slam")
 
     use_slam_arg = DeclareLaunchArgument(
         "use_slam",
@@ -45,9 +46,59 @@ def generate_launch_description():
         }.items()
     )
     
+    localization = IncludeLaunchDescription(
+        os.path.join(
+            get_package_share_directory("amr_localization"),
+            "launch",
+            "global_localization.launch.py"
+        ),
+        condition=UnlessCondition(use_slam)
+    )
+
+    slam = IncludeLaunchDescription(
+        os.path.join(
+            get_package_share_directory("amr_mapping"),
+            "launch",
+            "slam.launch.py"
+        ),
+        condition=IfCondition(use_slam)
+    )
+    
+    rviz_localization = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=["-d", os.path.join(
+                get_package_share_directory("amr_localization"),
+                "rviz",
+                "localization.rviz"
+            )
+        ],
+        output="screen",
+        parameters=[{"use_sim_time": True}],
+        condition=UnlessCondition(use_slam)
+    )
+    
+    rviz_mapping = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=["-d", os.path.join(
+                get_package_share_directory("amr_mapping"),
+                "rviz",
+                "mapping.rviz"
+            )
+        ],
+        output="screen",
+        parameters=[{"use_sim_time": True}],
+        condition=IfCondition(use_slam)
+    )
+    
     return LaunchDescription([
         use_slam_arg,
         gazebo,
         controller,
-        teleop
+        teleop,
+        localization,
+        slam,
+        rviz_localization,
+        rviz_mapping,
     ])

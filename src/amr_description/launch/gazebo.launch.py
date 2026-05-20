@@ -22,7 +22,7 @@ def generate_launch_description():
 
     world_name_arg = DeclareLaunchArgument(
         name="world_name",
-        default_value="office"
+        default_value="empty"
     )
 
     world_path = PathJoinSubstitution([
@@ -71,6 +71,9 @@ def generate_launch_description():
     gz_ros2_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
+        parameters=[
+        {"use_sim_time": True},
+        ],
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",

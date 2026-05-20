@@ -5,8 +5,8 @@
   <name>amr_interfaces</name>
   <version>0.0.1</version>
   <description>Custom ROS2 messages and services for AMR robot</description>
-  <maintainer email="himanshurokade543@gmail.com">Himanshu3040</maintainer>
-  <license>Apache-2.0</license>
+  <maintainer email="himanshurokade543@gmail.com">himanshu</maintainer>
+  <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
