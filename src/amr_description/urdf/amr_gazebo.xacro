@@ -50,7 +50,7 @@
   <gazebo reference="IMU_Link">
     <sensor name="imu" type="imu">
         <always_on>true</always_on>
-        <update_rate>100</update_rate>
+        <update_rate>10</update_rate>
         <gz_frame_id>IMU_Link</gz_frame_id>
         <topic>imu</topic>
         <imu>
@@ -101,7 +101,7 @@
   <gazebo reference="Lidar_Link">
     <sensor name="lidar" type="gpu_lidar">
       <always_on>true</always_on>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <topic>/scan</topic>
       <update_rate>5</update_rate>
       <gz_frame_id>Lidar_Link</gz_frame_id>
@@ -130,15 +130,15 @@
 
   <!-- Front Left (index 0) -->
   <gazebo reference="Ultrasonic_1">
-    <sensor name="ultrasonic_1" type="gpu_lidar">
+    <sensor name="ultrasonic_1" type="ray">
       <always_on>true</always_on>
-      <update_rate>10</update_rate>
+      <update_rate>5</update_rate>
       <topic>/ultrasonic_1_raw</topic>
       <gz_frame_id>Ultrasonic_1</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>40</samples>
+            <samples>10</samples>
             <resolution>1</resolution>
             <min_angle>0.139</min_angle>
             <max_angle>0.837</max_angle>
@@ -161,15 +161,15 @@
 
   <!-- Front Right (index 1) -->
   <gazebo reference="Ultrasonic_2">
-    <sensor name="ultrasonic_2" type="gpu_lidar">
+    <sensor name="ultrasonic_2" type="ray">
       <always_on>true</always_on>
-      <update_rate>10</update_rate>
+      <update_rate>5</update_rate>
       <topic>/ultrasonic_2_raw</topic>
       <gz_frame_id>Ultrasonic_2</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>40</samples>
+            <samples>10</samples>
             <resolution>1</resolution>
             <min_angle>-0.837</min_angle>
             <max_angle>-0.139</max_angle>
@@ -192,15 +192,15 @@
 
   <!-- Rear Right (index 2) -->
   <gazebo reference="Ultrasonic_3">
-    <sensor name="ultrasonic_3" type="gpu_lidar">
+    <sensor name="ultrasonic_3" type="ray">
       <always_on>true</always_on>
-      <update_rate>10</update_rate>
+      <update_rate>5</update_rate>
       <topic>/ultrasonic_3_raw</topic>
       <gz_frame_id>Ultrasonic_3</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>40</samples>
+            <samples>10</samples>
             <resolution>1</resolution>
             <min_angle>-3.0</min_angle>
             <max_angle>-2.3</max_angle>
@@ -223,15 +223,15 @@
 
   <!-- Rear Left (index 3) -->
   <gazebo reference="Ultrasonic_4">
-    <sensor name="ultrasonic_4" type="gpu_lidar">
+    <sensor name="ultrasonic_4" type="ray">
       <always_on>true</always_on>
-      <update_rate>10</update_rate>
+      <update_rate>5</update_rate>
       <topic>/ultrasonic_4_raw</topic>
       <gz_frame_id>Ultrasonic_4</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>40</samples>
+            <samples>10</samples>
             <resolution>1</resolution>
             <min_angle>2.3</min_angle>
             <max_angle>3.0</max_angle>
@@ -254,15 +254,15 @@
 
     <!-- Rear Middle (index 4) -->
   <gazebo reference="Ultrasonic_5">
-    <sensor name="ultrasonic_5" type="gpu_lidar">
+    <sensor name="ultrasonic_5" type="ray">
       <always_on>true</always_on>
-      <update_rate>10</update_rate>
+      <update_rate>5</update_rate>
       <topic>/ultrasonic_5_raw</topic>
       <gz_frame_id>Ultrasonic_5</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
-            <samples>40</samples>
+            <samples>10</samples>
             <resolution>1</resolution>
             <min_angle>-0.349</min_angle>
             <max_angle>0.349</max_angle>

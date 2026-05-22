@@ -1,9 +1,9 @@
 <sdf version='1.10'>
   <world name='office_world'>
     <physics name='1ms' type='ignored'>
-      <max_step_size>0.001</max_step_size>
+      <max_step_size>0.0040000000000000001</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_update_rate>250</real_time_update_rate>
     </physics>
     <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
     <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
@@ -14,8 +14,8 @@
     <scene>
       <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
       <background>0.699999988 0.699999988 0.699999988 1</background>
-      <shadows>true</shadows>
-    </scene>
+      <shadows>false</shadows>
+    </scene>  
     <model name='ground_plane'>
       <static>true</static>
       <link name='link'>
@@ -66,7 +66,7 @@
     </model>
     <model name='wall_north'>
       <static>true</static>
-      <pose>0 3.2 1.25 0 0 0</pose>
+      <pose>0 3.2000000000000002 1.25 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -112,7 +112,7 @@
     </model>
     <model name='wall_south'>
       <static>true</static>
-      <pose>0 -3.2 1.25 0 0 0</pose>
+      <pose>0 -3.2000000000000002 1.25 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -158,7 +158,7 @@
     </model>
     <model name='wall_east'>
       <static>true</static>
-      <pose>11.28 0 1.25 0 0 0</pose>
+      <pose>11.279999999999999 0 1.25 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -204,7 +204,7 @@
     </model>
     <model name='wall_west'>
       <static>true</static>
-      <pose>-11.28 0 1.25 0 0 0</pose>
+      <pose>-11.279999999999999 0 1.25 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -250,7 +250,7 @@
     </model>
     <model name='desk_row_1'>
       <static>true</static>
-      <pose>-9.525 -0.7 0.375 0 0 0</pose>
+      <pose>-9.5250000000000004 -0.69999999999999996 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -296,7 +296,7 @@
     </model>
     <model name='desk_row_2'>
       <static>true</static>
-      <pose>-6.47 -0.7 0.375 0 0 0</pose>
+      <pose>-6.4699999999999998 -0.69999999999999996 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -342,7 +342,7 @@
     </model>
     <model name='desk_row_3'>
       <static>true</static>
-      <pose>-3.415 -0.7 0.375 0 0 0</pose>
+      <pose>-3.415 -0.69999999999999996 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -388,7 +388,7 @@
     </model>
     <model name='desk_row_4'>
       <static>true</static>
-      <pose>-0.36 -0.7 0.375 0 0 0</pose>
+      <pose>-0.35999999999999999 -0.69999999999999996 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -434,7 +434,7 @@
     </model>
     <model name='desk_row_5'>
       <static>true</static>
-      <pose>2.695 -0.7 0.375 0 0 0</pose>
+      <pose>2.6949999999999998 -0.69999999999999996 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -480,7 +480,7 @@
     </model>
     <model name='desk_block_1'>
       <static>true</static>
-      <pose>5.897 -2.3 0.375 0 0 0</pose>
+      <pose>5.8970000000000002 -2.2999999999999998 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -526,7 +526,7 @@
     </model>
     <model name='desk_block_2'>
       <static>true</static>
-      <pose>9.697 -0.93 0.375 0 0 0</pose>
+      <pose>9.6969999999999992 -0.93000000000000005 0.375 0 0 0</pose>
       <link name='link'>
         <collision name='col'>
           <geometry>
@@ -571,7 +571,7 @@
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -602,11 +602,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-8.95 -2.375 0 0 0 -1.4985899179966085</pose>
+      <pose>-9.0425519943237305 -2.3816945552825928 0 0 0 -1.4985899179966082</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_0'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -637,11 +637,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-8.95 -1.212 0 0 0 -1.6018799515751012</pose>
+      <pose>-9.0535812377929688 -1.2087801694869995 0 0 0 -1.6018799515751012</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_1'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -672,11 +672,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-8.95 -0.3 0 0 0 -1.5228098151047016</pose>
+      <pose>-9.0496711730957031 -0.3047865629196167 0 0 0 -1.5228099795990022</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_2'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -707,11 +707,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-8.96 0.8 0 0 0 -1.6321199904310519</pose>
+      <pose>-9.0469150543212891 0.805336594581604 0 0 0 -1.6321199904310519</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_3'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -742,11 +742,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-10.28 -2.35 0 0 0 1.6417300107423911</pose>
+      <pose>-10.005900382995605 -2.3305299282073975 0 0 0 1.6417300107423911</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_4'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -777,11 +777,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-10.28 -1.23 0 0 0 1.5632300223304998</pose>
+      <pose>-9.9961729049682617 -1.2321475744247437 0 0 0 1.5632300223305</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_5'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -812,11 +812,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-10.28 -0.1 0 0 0 1.6122500461541245</pose>
+      <pose>-9.9877939224243164 -0.087880022823810577 0 0 0 1.6122500461541245</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_6'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -847,11 +847,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-10.28 0.8 0 0 0 1.5572699514204915</pose>
+      <pose>-9.9995622634887695 0.79620647430419922 0 0 0 1.5572699514204917</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_7'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -882,11 +882,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-7.155 -2.37 0 0 0 1.5504100490656412</pose>
+      <pose>-6.9488143920898438 -2.3742039203643799 0 0 0 1.5504100490656416</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_8'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -917,11 +917,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-7.155 -1.3 0 0 0 1.6686199764162439</pose>
+      <pose>-6.9432086944580078 -1.2792153358459473 0 0 0 1.6686199764162439</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_9'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -952,11 +952,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-7.155 -0.2 0 0 0 1.6296300092586866</pose>
+      <pose>-6.9390606880187988 -0.18728081881999969 0 0 0 1.6296300092586866</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_10'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -987,11 +987,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-7.155 0.8 0 0 0 1.5816799612462569</pose>
+      <pose>-6.9329514503479004 0.80241680145263672 0 0 0 1.5816799612462569</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_11'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1022,11 +1022,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-5.82 -2.5 0 0 0 -1.5615700117793743</pose>
+      <pose>-5.9789981842041016 -2.5014669895172119 0 0 0 -1.5615700117793743</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_12'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1057,11 +1057,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-5.82 -1.4 0 0 0 -1.6046200241884669</pose>
+      <pose>-5.9922614097595215 -1.3941712379455566 0 0 0 -1.6046200241884669</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_13'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1092,11 +1092,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-5.82 -0.2 0 0 0 -1.4879399954265218</pose>
+      <pose>-5.9909677505493164 -0.21419826149940491 0 0 0 -1.4879399954265218</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_14'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1127,11 +1127,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-5.82 0.95 0 0 0 -1.5332300646702477</pose>
+      <pose>-6.0053014755249023 0.94303560256958008 0 0 0 -1.5332300646702477</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_15'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1162,11 +1162,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-4 -2.3 0 0 0 1.6013499340313082</pose>
+      <pose>-3.8870096206665039 -2.2965466976165771 0 0 0 1.6013499340313082</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_16'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1197,11 +1197,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-4 -1.34 0 0 0 1.6189400097345066</pose>
+      <pose>-3.8889195919036865 -1.3346481323242188 0 0 0 1.618940009734507</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_17'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1232,11 +1232,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-4 -0.2 0 0 0 1.6598700079346917</pose>
+      <pose>-3.8903238773345947 -0.19020481407642365 0 0 0 1.6598700079346922</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_18'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1267,11 +1267,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-4 0.9 0 0 0 1.6747799908562164</pose>
+      <pose>-3.881723165512085 0.91234332323074341 0 0 0 1.674779990856216</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_19'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1302,11 +1302,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-2.85 -2.42 0 0 0 -1.5056800803601942</pose>
+      <pose>-2.9378147125244141 -2.4257264137268066 0 0 0 -1.5056800803601942</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_20'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1337,11 +1337,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-2.82 -1.53 0 0 0 -1.4881900534906298</pose>
+      <pose>-2.943084716796875 -1.5401906967163086 0 0 0 -1.4881900534906298</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_21'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1372,11 +1372,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-2.8 -0.42 0 0 0 -1.5393700069948744</pose>
+      <pose>-2.9317798614501953 -0.42414271831512451 0 0 0 -1.5393700069948744</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_22'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1407,11 +1407,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-2.8 0.8 0 0 0 -1.5723200197788636</pose>
+      <pose>-2.9488430023193359 0.80022680759429932 0 0 0 -1.572320019778864</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_23'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1442,11 +1442,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-1 -2.48 0 0 0 1.6638399742436478</pose>
+      <pose>-0.84913855791091919 -2.4659225940704346 0 0 0 1.663839974243648</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_24'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1477,11 +1477,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-1 -1.36 0 0 0 1.6419299994745273</pose>
+      <pose>-0.83782833814620972 -1.3484447002410889 0 0 0 1.6419299994745273</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_25'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1512,11 +1512,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-1 -0.37 0 0 0 1.5587000235133133</pose>
+      <pose>-0.83502572774887085 -0.37199568748474121 0 0 0 1.5587000235133133</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_26'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1547,11 +1547,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>-1 0.8 0 0 0 1.5238900036128109</pose>
+      <pose>-0.84018588066101074 0.79249823093414307 0 0 0 1.5238900036128109</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_27'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1582,11 +1582,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>0.35 -2.53 0 0 0 -1.4242900041560553</pose>
+      <pose>0.12222231924533844 -2.5636117458343506 0 0 0 -1.424290004156056</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_28'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1617,11 +1617,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>0.35 -1.553 0 0 0 -1.5376500220054199</pose>
+      <pose>0.12256653606891632 -1.5605412721633911 0 0 0 -1.5376500220054199</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_29'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1652,11 +1652,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>0.35 -0.46 0 0 0 -1.5185900102029748</pose>
+      <pose>0.13265500962734222 -0.47135710716247559 0 0 0 -1.5185900102029748</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_30'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1687,11 +1687,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>0.35 0.8 0 0 0 -1.5069099763356346</pose>
+      <pose>0.11028351634740829 0.78466451168060303 0 0 0 -1.5069099763356346</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_31'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1722,11 +1722,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>2.25 -2.67 0 0 0 1.676810052293827</pose>
+      <pose>2.2266314029693604 -2.6724867820739746 0 0 0 1.676810052293827</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_32'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1757,11 +1757,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>2.25 -1.66 0 0 0 1.5485000134781883</pose>
+      <pose>2.2138969898223877 -1.6591948270797729 0 0 0 1.5485000134781888</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_33'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1792,11 +1792,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>2.25 -0.5 0 0 0 1.6054699997661273</pose>
+      <pose>2.2278969287872314 -0.50076669454574585 0 0 0 1.6054699997661275</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_34'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1827,11 +1827,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>2.25 0.8 0 0 0 1.6496899761894745</pose>
+      <pose>2.2264864444732666 0.79814106225967407 0 0 0 1.6496899761894745</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_35'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1862,11 +1862,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>3.28 -2.69 0 0 0 -1.4699400166712293</pose>
+      <pose>3.1728181838989258 -2.7008469104766846 0 0 0 -1.4699400166712293</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_36'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1897,11 +1897,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>3.28 -1.57 0 0 0 -1.5529599656330788</pose>
+      <pose>3.1633760929107666 -1.5720803737640381 0 0 0 -1.5529599656330786</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_37'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1932,11 +1932,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>3.28 -0.6 0 0 0 -1.5926600172577994</pose>
+      <pose>3.1690325736999512 -0.59757345914840698 0 0 0 -1.5926600172577994</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_38'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -1967,11 +1967,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>3.28 0.6 0 0 0 -1.5353700476193992</pose>
+      <pose>3.1587150096893311 0.59570157527923584 0 0 0 -1.5353700476193985</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_39'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -2002,11 +2002,11 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>5 -1.2 0 0 0 0</pose>
+      <pose>5 -1.5420442819595337 0 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
     <model name='OfficeChairGrey_40'>
-      <static>false</static>
+      <static>true</static>
       <link name='body'>
         <pose>0 0 0 0 0 0</pose>
         <visual name='visual'>
@@ -2037,7 +2037,7 @@
         </inertial>
         <enable_wind>false</enable_wind>
       </link>
-      <pose>6.58 -1.2 0 0 0 0</pose>
+      <pose>6.5799999237060547 -1.5477249622344971 0 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
     <light name='sun' type='directional'>
