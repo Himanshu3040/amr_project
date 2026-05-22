@@ -23,6 +23,7 @@
   <depend>twist_mux_msgs</depend>
   <depend>rclcpp_action</depend>
   <depend>visualization_msgs</depend>
+  <depend>amr_interfaces</depend>
   
   <exec_depend>tf_transformations</exec_depend>
   <exec_depend>ros2launch</exec_depend>

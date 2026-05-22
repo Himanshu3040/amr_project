@@ -1,33 +1,30 @@
 # Processed ultrasonic zone data
-# Published by: ultrasonic_safety_stop_node
-# Subscribed by: safety_arbitrator_node, diagnostic_node
+# Published by: obstacle_monitor_node
+# Subscribed by: nav2 stack, delivery_ack_node, diagnostic_node
 #
-# Sensor index mapping:
-#   Index 0 = Front Left
-#   Index 1 = Front Right
-#   Index 2 = Rear Left
-#   Index 3 = Rear Right
-#
-# Zone definitions:
-#   CLEAR      = distance > protective threshold  → robot moves normally
-#   PROTECTIVE = distance <= protective threshold → robot stops immediately
-#
-# Protective thresholds:
-#   Front sensors (index 0, 1): 250 mm
-#   Rear  sensors (index 2, 3): 130 mm
+# Zone definitions (based on DYP-A21 range: 3cm to 500cm):
+# CLEAR      = distance > 300cm  → robot moves normally
+# WARNING    = 150cm to 300cm   → robot slows down
+# PROTECTIVE = 3cm to 150cm     → robot stops, waits 120 seconds
 
 std_msgs/Header header
 
-# Raw distances copied from UltrasonicRaw for reference (mm)
-float32[5] distances_mm
+# Raw distances (copied from UltrasonicRaw for reference)
+float32[4] distances_mm
 
-# Zone classification per sensor: 0=CLEAR, 1=PROTECTIVE
-int8[5] zones
+# Zone classification per sensor
+# 0=CLEAR, 1=WARNING, 2=PROTECTIVE
+int8[4] zones
 
-# Overall robot zone — worst across all 4 sensors
-# If ANY sensor is PROTECTIVE, this is PROTECTIVE
+# Overall robot zone — worst (highest) zone across all 4 sensors
+# This is what Nav2 and obstacle logic actually acts on
 int8 robot_zone
 
-# Zone constants
+# How many seconds the robot has been stopped in PROTECTIVE zone
+# Resets to 0 when obstacle clears or robot reroutes
+float32 stop_duration_seconds
+
+# Zone constants — use these in your code by name, not by number
 int8 ZONE_CLEAR=0
-int8 ZONE_PROTECTIVE=1
+int8 ZONE_WARNING=1
+int8 ZONE_PROTECTIVE=2

@@ -21,6 +21,7 @@ def generate_launch_description():
             "launch",
             "gazebo.launch.py"
         ),
+        launch_arguments={"use_sim_time": "True"}.items()
     )
     
     controller = IncludeLaunchDescription(
@@ -31,7 +32,8 @@ def generate_launch_description():
         ),
         launch_arguments={
             "use_simple_controller": "False",
-            "use_python": "False"
+            "use_python": "False",
+            "use_sim_time": "True"
         }.items(),
     )
     
@@ -52,6 +54,7 @@ def generate_launch_description():
             "launch",
             "global_localization.launch.py"
         ),
+        launch_arguments={"use_sim_time": "True"}.items(),
         condition=UnlessCondition(use_slam)
     )
 
@@ -61,6 +64,7 @@ def generate_launch_description():
             "launch",
             "slam.launch.py"
         ),
+        launch_arguments={"use_sim_time": "True"}.items(),
         condition=IfCondition(use_slam)
     )
     

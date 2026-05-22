@@ -22,7 +22,7 @@ def generate_launch_description():
 
     world_name_arg = DeclareLaunchArgument(
         name="world_name",
-        default_value="empty"
+        default_value="office"
     )
 
     world_path = PathJoinSubstitution([
