@@ -1,88 +1,53 @@
-#ifndef DIJKSTRA_PLANNER_HPP
-#define DIJKSTRA_PLANNER_HPP
-
-#include <string>
-#include <memory>
+#pragma once
 
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_action/rclcpp_action.hpp"
-#include "geometry_msgs/msg/point.hpp"
+#include "tf2_ros/buffer.h"
+#include "tf2_ros/transform_listener.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
-
-#include "nav2_core/global_planner.hpp"
 #include "nav_msgs/msg/path.hpp"
-#include "nav2_util/robot_utils.hpp"
-#include "nav2_util/lifecycle_node.hpp"
-#include "nav2_costmap_2d/costmap_2d_ros.hpp"
-#include "nav2_msgs/action/smooth_path.hpp"
+#include "nav_msgs/msg/occupancy_grid.hpp"
 
 namespace amr_planning
 {
 struct GraphNode
 {
-    int x;
-    int y;
-    int cost;
-    std::shared_ptr<GraphNode> prev;
+  int x, y, cost;
+  double heuristic;
+  std::shared_ptr<GraphNode> prev;
 
-    GraphNode() : GraphNode(0,0) {}
+  GraphNode() : GraphNode(0, 0) {}
+  GraphNode(int in_x, int in_y) : x(in_x), y(in_y), cost(0), heuristic(0.0) {}
 
-    GraphNode(int in_x, int in_y) : x(in_x), y(in_y), cost(0){}
-
-    bool operator>(const GraphNode & other) const { 
-        return cost > other.cost;
-    }
-
-    bool operator==(const GraphNode & other) const {
-        return x == other.x && y == other.y;
-    }
-
-    GraphNode operator+(std::pair<int, int> const & other) {
-        GraphNode res(x + other.first, y + other.second);
-        return res;
-    }
+  bool operator>(const GraphNode & other) const {
+    return cost + heuristic > other.cost + other.heuristic;
+  }
+  bool operator==(const GraphNode & other) const {
+    return x == other.x && y == other.y;
+  }
+  GraphNode operator+(std::pair<int, int> const & other) {
+    return GraphNode(x + other.first, y + other.second);
+  }
 };
 
-class DijkstraPlanner : public nav2_core::GlobalPlanner
+class DijkstraPlanner : public rclcpp::Node
 {
 public:
-  DijkstraPlanner() = default;
-  ~DijkstraPlanner() = default;
-
-  void configure(
-    const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
-    std::string name, std::shared_ptr<tf2_ros::Buffer> tf,
-    std::shared_ptr<nav2_costmap_2d::Costmap2DROS> costmap_ros) override;
-
-  void cleanup() override;
-
-  void activate() override;
-
-  void deactivate() override;
-
-  nav_msgs::msg::Path createPlan(
-    const geometry_msgs::msg::PoseStamped & start,
-    const geometry_msgs::msg::PoseStamped & goal,
-    std::function<bool()> cancel_checker) override;
-
+  DijkstraPlanner();
 private:
-  std::shared_ptr<tf2_ros::Buffer> tf_;
-  nav2_util::LifecycleNode::SharedPtr node_;
-  nav2_costmap_2d::Costmap2D * costmap_;
-  std::string global_frame_, name_;
-  double interpolation_resolution_;
-
-  rclcpp_action::Client<nav2_msgs::action::SmoothPath>::SharedPtr smooth_client_;
-
-  bool poseOnMap(const GraphNode & node);
-  
+  rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr map_sub_;
+  rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pose_sub_;
+  rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr path_pub_;
+  rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr map_pub_;
+  nav_msgs::msg::OccupancyGrid::SharedPtr map_;
+  nav_msgs::msg::OccupancyGrid visited_map_;
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;
+  std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+  void mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr map);
+  void goalCallback(const geometry_msgs::msg::PoseStamped::SharedPtr pose);
   GraphNode worldToGrid(const geometry_msgs::msg::Pose & pose);
-  
   geometry_msgs::msg::Pose gridToWorld(const GraphNode & node);
-  
+  bool poseOnMap(const GraphNode & node);
   unsigned int poseToCell(const GraphNode & node);
+  nav_msgs::msg::Path plan(const geometry_msgs::msg::Pose & start, const geometry_msgs::msg::Pose & goal);
 };
-
-}  // namespace amr_planning
-
-#endif  // DIJKSTRA_PLANNER_HPP
+}
