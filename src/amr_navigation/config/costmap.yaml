@@ -34,7 +34,7 @@ costmap:
 
     inflation_layer:
       plugin: "nav2_costmap_2d::InflationLayer"
-      inflation_radius: 0.6 # Adjust this radius to increase or decrease the area around obstacles that is considered high cost
-      cost_scaling_factor: 5.0 # Adjust this factor to increase or decrease the cost of cells near obstacles
+      inflation_radius: 0.6 
+      cost_scaling_factor: 5.0 
       
     
