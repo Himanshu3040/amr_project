@@ -24,7 +24,7 @@ public:
 private:
   void joy_cb(const sensor_msgs::msg::Joy::SharedPtr msg)
   {
-    bool deadman_pressed = (msg->axes[deadman_axis_1_] == -1.0) ||
+    bool deadman_pressed = (msg->axes[deadman_axis_1_] == -1.0) &&
                            (msg->axes[deadman_axis_2_] == -1.0);
 
     if (!deadman_pressed) return;

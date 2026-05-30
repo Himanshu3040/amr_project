@@ -36,16 +36,20 @@ set(dependencies
   pluginlib
 )
 
-add_executable(pd_motion_planner src/pd_motion_planner.cpp)
+add_library(pd_motion_planner SHARED src/pd_motion_planner.cpp)
 ament_target_dependencies(pd_motion_planner ${dependencies})
 
-add_executable(pure_pursuit src/pure_pursuit.cpp)
+add_library(pure_pursuit SHARED src/pure_pursuit.cpp)
 ament_target_dependencies(pure_pursuit ${dependencies})
+
+pluginlib_export_plugin_description_file(nav2_core motion_planner_plugins.xml)
 
 install(TARGETS
   pd_motion_planner
   pure_pursuit
-  DESTINATION lib/${PROJECT_NAME}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
@@ -60,5 +64,9 @@ install(PROGRAMS
 )
 
 ament_export_include_directories(include)
+ament_export_libraries(
+  pd_motion_planner
+  pure_pursuit
+)
 ament_export_dependencies(${dependencies})
 ament_package()
