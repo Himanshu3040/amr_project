@@ -48,6 +48,9 @@ ament_target_dependencies(bumper_retreat rclcpp sensor_msgs std_msgs geometry_ms
 add_executable(ultrasonic_sim_bridge src/ultrasonic_sim_bridge.cpp)
 ament_target_dependencies(ultrasonic_sim_bridge rclcpp sensor_msgs amr_interfaces)
 
+add_executable(joy_to_twist src/joy_to_twist.cpp)
+ament_target_dependencies(joy_to_twist rclcpp geometry_msgs sensor_msgs)
+
 ament_python_install_package(${PROJECT_NAME})
 
 install(
@@ -65,6 +68,7 @@ install(TARGETS
   safety_arbitrator
   turbo_scaler
   ultrasonic_sim_bridge
+  joy_to_twist
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -80,6 +84,7 @@ install(PROGRAMS
   ${PROJECT_NAME}/lidar_safety_stop.py
   ${PROJECT_NAME}/ultrasonic_safety_stop.py
   ${PROJECT_NAME}/turbo_scaler.py 
+  ${PROJECT_NAME}/joy_to_twist.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -17,15 +17,14 @@ def generate_launch_description():
         description="Use simulated time"
     )
 
-    joy_teleop = Node(
-        package="joy_teleop",
-        executable="joy_teleop",
-        parameters=[
-            os.path.join(amr_controller_pkg, "config", "joy_teleop.yaml"),
-            {"use_sim_time": LaunchConfiguration("use_sim_time")}
-        ],
-    )
-
+    joy_to_twist = Node(
+    package="amr_controller",
+    executable="joy_to_twist",
+    name="joy_to_twist",
+    parameters=[{
+        "use_sim_time": LaunchConfiguration("use_sim_time"),
+    }]
+)
     joy_node = Node(
         package="joy",
         executable="joy_node",
@@ -69,7 +68,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         use_sim_time_arg,
-        joy_teleop,
+        joy_to_twist,
         joy_node,
         twist_mux_node,
         turbo_scaler_node, 
